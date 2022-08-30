@@ -6,11 +6,30 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <style> 
+            div {
+                border: thick solid black;
+                margin:0.25rem;
+                padding:0.25rem;
+            }
+            .c {
+                background-color:#DDDDDD;
+            }
+            #f {
+                display:flex; 
+                flex-direction: row;
+            }
+        </style>
     </head>
     <body>
-        <div>Hello world</div>
+        <div id="f" class='c'>
+            Apples
+            <div>
+                Bananas
+            </div>
+            <div>
+                Cherries
+            </div>
+        </div>
     </body>
 </html>
