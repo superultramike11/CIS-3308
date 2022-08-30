@@ -51,7 +51,7 @@ body {
 
 #nav a {  /* no change */
     text-decoration:none;  /* Do not want links in "nav" to be underlined */
-    color: #C8C8C8; /* light gray: to provide color for links, you have to style the "a" tag */
+    color: white; /* light gray: to provide color for links, you have to style the "a" tag */
 }
 
 #content {  /* Added padding top and bottom to prevent top/bottom content from getting hidden under titleNav/footer */ 
@@ -71,4 +71,18 @@ body {
     width:100%;
     text-align:center;
     padding:8px;	 	 
+}
+
+#mainlinks:link {
+    color: pink;
+    text-decoration:none;
+}
+
+#mainlinks:hover {
+    color: darkblue;
+    text-decoration: underline;
+}
+
+#mainlinks:visited {
+    color: blueviolet;
 }
