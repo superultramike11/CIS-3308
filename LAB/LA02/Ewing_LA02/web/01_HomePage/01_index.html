@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+
+        <!-- Makes your page look better if viewed in a mobile device -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Text that shows in the browser tab -->
+        <title>Single Page - No Navigation</title>
+
+        <!-- The little icon that shows in the browser tab -->
+        <link rel="shortcut icon" href="icons/smiley.png" />  
+
+        <!-- Link to external style sheet -->
+        <link href="style/myStyle.css" rel="stylesheet" type="text/css" />  
+
+        <!-- Internal Styles can be put here (would apply only to this page) -->
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                Home | Account | Search | Tutorial | Blog
+            </div>
+        </div>
+        <div id="content">
+
+            First line of content (not hidden under TitleNav)<br/>
+
+            <div class='hero'>A Sample Home Page ! </div>
+
+            <p>
+                This layout has a media query that makes the web page "responsive" meaning that it 
+                looks good regardless of the width of the viewport, whether desktop or mobile device. 
+            </p>
+            <p>
+                Here's how it works: narrow your browser window until you see a change in the layout.
+                The nav bar should go under the title and the top margin of the content area gets 
+                taller so that the top of the content is not hidden under the taller titleNav. 
+            </p>
+
+            Last line of content (not hidden under Footer)
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+    </body>
+</html>

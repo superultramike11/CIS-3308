@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Building a simple router</title>
+        <style>
+            #nav {
+                font-size: 1.3rem;
+                font-weight: bold;
+                color: purple;
+                padding-right: 2rem;
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+
+        <br/>
+        <br/>
+
+        <div id="nav">
+            <!-- THE NAV BAR -->
+            <a onclick = "inject(homeContent())">Home</a> |
+            <a onclick = "inject(blogContent())">Blog</a> 
+        </div>
+        <br/>
+        <br/>
+
+        <!-- Note: the JavaScript code expects there to be a DOM object with id "view" -->
+        <!-- This is where the content is placed. -->
+        <div id="view">
+
+        </div>
+
+        <script src="js/content/homeContent.js"></script>
+        <script src="js/content/blogContent.js"></script>
+
+        <script>
+                // make the browser throw an error when a non declared variable is referenced
+                // (instead of auto-declaring a global variable). 
+                "use strict";
+
+                // cleans out the container and then injects (into container) whatever was passed in.
+                // if you don't clean out first, it appends, not replaces.
+                function inject(what) {
+                    // blank out the content area 
+                    document.getElementById("view").innerHTML = "";
+
+                    // place the DOM element (input parameter) into the content area 
+                    document.getElementById("view").appendChild(what);
+                }
+
+                // sends the output of the call to home() to the inject function 
+                inject(homeContent());
+
+        </script>
+    </body>
+</html>

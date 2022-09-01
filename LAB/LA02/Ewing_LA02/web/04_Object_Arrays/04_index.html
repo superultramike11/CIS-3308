@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+Dynamically creating an array of objects using JavaScript. 
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Object Arrays</h2>
+
+        <div id="show"></div>
+
+        <script>
+            
+            // make the browser throw an error when a non declared variable is referenced
+            // (instead of auto-declaring a global variable). 
+            "use strict";
+            
+            var myObjArray = [
+                {partNo: 1111, partDesc: "hammer"},
+                {partNo: 2222, partDesc: "nails"},
+                {partNo: 3333, partDesc: "drill"}
+            ];
+           
+           
+            // <br/> is just a new line in HTML code...
+
+            var out = "";
+            for (var i = 0; i < myObjArray.length; i++) {
+                out += "part number is " + myObjArray[i].partNo +
+                        ", description is " + myObjArray[i].partDesc + "<br/>";
+            }
+
+            out += "<br/><br/><h3>Again...</h3>"
+
+            // here's another way to iterate over array elements...
+            // it's called "for - of"
+            for (var part of myObjArray) {
+                out += "part number is " + part.partNo +
+                        ", description is " + part.partDesc + "<br/>";
+            }
+
+            document.getElementById("show").innerHTML = out;
+
+        </script>
+    </body>
+</html>

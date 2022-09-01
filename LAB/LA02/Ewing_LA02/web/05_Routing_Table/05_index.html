@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Building a simple router</title>
+    </head>
+    <body>
+
+        <a href="#/home">Home</a> |
+        <a href="#/blog">Blog</a> |
+        <a href="#/bad">Invalid Link</a>
+        <br/>
+        <br/>
+
+        <!-- Note: the JavaScript code expects there to be a DOM object with id "view" -->
+        <!-- This is where the content is placed. -->
+        <div id="view">
+
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+
+        <div style ="background-color: #DDDDDD; padding: 1ex; border-top: thick solid black;">
+
+            <p>
+                This version of the code simply puts uses all the possible nav link (href values) 
+                as keys in an associative array. The value for each key is just the JS function 
+                that should be run whenever the associated key/link is clicked. 
+            </p>
+            <p>
+                With this code, we simply:
+            </p>
+            <ul>
+                <li>
+                    Declare a global array (routes) with key/value pairs that define all the desired
+                    link/content associations. 
+                </li>
+                <li>
+                    Define a simple router function that places the desired content on the page, based 
+                    on the value of the active link (window.location.hash).
+                </li>
+                <li>
+                    Then we add an event handler that invokes function 'router' whenever the active link changes. 
+                    <br/>
+                    <pre>
+    window.addEventListener('hashchange', router);
+                    </pre>
+                </li>
+                <li>
+                    This line of code injects the page with home content upon initial page load. We set the 
+                    hash to a dummy value before setting it to the desired home content - just to ensure that there 
+                    is a change to the location.hash upon page refresh (this avoids the occasional empty content upon
+                    page refresh).
+                    <br/>
+                    <pre>
+    window.location.hash = '/home';
+                    </pre>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            // Prevent browser from (globally) auto-declaring
+            // any referenced variable that was never declared.
+            "use strict";
+        </script>
+        
+        <script src="js/content/homeContent.js"></script>
+        <script src="js/content/blogContent.js"></script>
+
+        <script>
+
+//          Examples of associative array. 
+//          var myArray=[]; // declare & instatiate empty array
+//          myArray["a123"] = "nut"; // put an associative entry in it
+//          myArray.b234 = "bolt";   // different syntax (put entry in).
+//          myArray["a123"] will evaluate to "nut"
+//          myArray.a123 will evaluate to "nut"
+//          myArray["b234"] will evaluate to "bolt"
+//          myArray.b234 will evaluate to "bolt"
+
+            // set up route associative (key/value) array to hold link/content associations.
+            var routes = [];
+
+            // Add link/content entries into the route array. 
+            // Using JS associative array notation to store key/value pair like a hash. 
+            // With associative array syntax, the key looks like an array index 
+            // (even though its a character string, not an integer).
+            routes['/'] = home; // note: home is not in quotes. home is a function (not a string)
+            routes['#/home'] = home; // the JS function home
+            routes['#/blog'] = blog; // the JS function blog
+
+            function inject(what) {
+                document.getElementById("view").innerHTML = "";
+                document.getElementById("view").appendChild(what);
+            }
+
+            function router() {
+
+                console.log("location.hash (the link that was clicked) is " + location.hash);
+                // prints something like #/home
+
+                var path = location.hash;
+
+                // Use the url like an index (JS associative array notation) to find 
+                // out which function should be called. 
+                if (!routes[path]) {
+                    var ele = document.createElement("div");
+                    ele.innerHTML = "<h4>Error: path '" + path + "' was never added to the route array</h4>";
+                    inject(ele);
+                } else {
+                    var newDOM = routes[path](); // routes[path] is a function that returns a DOM element
+                    inject(newDOM); // pass the DOM element to the inject function. 
+                }
+            }
+
+            // Listen on hash change (whenever a link is clicked)
+            // In other words, whenever a link is clicked, invoke function router.
+            window.addEventListener('hashchange', router);
+
+            // invoke an invalid content/link so that the next line will definitely change location.hash
+            // Otherwise sometimes with refresh you do not see the home content
+            window.location.hash = '#/xxx';
+
+            // content for when page is first rendered.
+            window.location.hash = '#/home';
+        </script>
+    </body>
+</html>

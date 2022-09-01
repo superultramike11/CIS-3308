@@ -1,0 +1,175 @@
+<!-- Single Page Design Template -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- It's good practice for modern web design to include these meta tags  -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Single Page</title>
+        <!-- CSS Sample Rules. Modify them as needed -->
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0; /* remove any default spacing */
+            }
+            html, body {
+                min-width: 320px;
+            }
+            h1 {
+                font-size: 2.0em; /* see how h1 is being changed in the media query rule */
+                color: red;
+            }
+            ul {
+                margin: auto 2.0em;
+            }
+            /* single page design container */
+            .sng-page-container {
+                position: relative;
+                max-width: 100%;
+                margin-bottom: 180px; /* leave room for 180px tall footer, unless you want a full page for it */
+                z-index: 1;
+            }
+            /* single page */
+            .sng-page {
+                min-height: 500px; /* fallout for older browsers */
+                min-height: 100vh;
+                padding-left: 1.0em;
+                padding-right: 1.0em;
+            }
+            #footer {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: black;
+                color: silver;
+                font-size: 24px;
+                letter-spacing: 1px;
+                text-align: center;
+                height: 180px;
+                z-index: 0;
+            }
+            #footer p {
+                margin: 90px auto; /* center vertically */
+            }
+            #footer a {
+                text-decoration: none;
+                color: silver;
+            }
+            #footer a:hover {
+                color: white;
+            }
+
+            /* some colors to differentiate the pages */
+            #page1 {
+                background-color: lightcyan;
+            }
+            #page2 {
+                background-color: lightyellow;
+            }
+            #page3 {
+                background-color: violet;
+            }
+
+            /* Media query: apply these rules when browser screen > 479px */
+            @media screen and (min-width: 480px) {
+                .sng-page {
+                    padding: 2.0em;
+                }
+                .sng-page h1 {
+                    font-size: 6.0em;
+                    color: black;
+                }
+            }
+
+
+            #nav {
+                position:fixed;
+                background-color:white;
+                top:0px;
+                right:0px;
+                padding: 10px;
+                font-size:18px;
+                font-weight:bold;
+                z-index:3;
+                margin-right:0px;
+                border-bottom-left-radius: 10px;
+                box-shadow: 2px 2px 2px gray;
+            }
+            #nav li {
+                display:inline;
+                margin-left:5px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Put all the page you have in a .sng-page-container  -->
+        <div id="content" class="sng-page-container">
+            <ul id="nav">
+                <li>Click these links: </li>
+                <li><a href="#page1">p1</a></li>
+                <li><a href="#page2">p2</a></li>
+                <li><a href="#page3">p3</a></li>
+            </ul>
+
+
+            <!-- Page 1 -->
+            <div id="page1" class="sng-page">
+
+                <h1>Page 1</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <!-- Page 2 -->
+            <div id="page2" class="sng-page">
+                <h1>Page 2</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <!-- Page 3 -->
+            <div id="page3" class="sng-page">
+                <h1>Page 3</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+
+        <!-- Footer. This takes a 180px height; adjust as needed -->
+        <footer id="footer">
+            <p><a href="#content">&copy; Gotta have a footer !</a></p>
+        </footer>
+
+        <script>
+            // It's always best to ask the browser to throw an error 
+            // If the page ever tries to access an undeclared variable. 
+            // without "use strict", the browser would auto-declare any 
+            // undeclared variable that was referenced (and make it a global 
+            // declaration).
+            "use strict";
+
+            // Whenever a link is clicked (or window.location.hash changes), invoke function router
+            window.addEventListener('hashchange', router);
+
+            function router() {
+                console.log("you just clicked on this (internal) link: " +
+                        location.hash);
+            }
+
+            console.log("the hashchange event will invoke function 'router'");
+        </script>
+
+    </body>
+</html>

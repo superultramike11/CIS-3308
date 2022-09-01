@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- HTML comments must be like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="shortcut icon" href="icons/smiley.png" />  
+
+        <link href="style/main.css" rel="stylesheet" type="text/css" />  
+        <link href="style/NavRouter.css" rel="stylesheet" type="text/css" />  
+
+        <style>
+
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                <!-- HTML comment: 
+                    The nav area is empty. It will get populated with the links 
+                    you want -- by the NavRouter component.
+                -->
+            </div>
+        </div>
+        <div id="content">
+
+            <!-- HTML comment: 
+                The content div is empty. It will get content "injected into it"
+                by the NavRouter component.
+            -->
+
+        </div> <!-- end of content area -->
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+
+        <script>
+            // Prevent browser from (globally) auto-declaring
+            // any referenced variable that was never declared.
+            "use strict";
+        </script>
+
+        <!-- Suggest you keep these in the same order as you see them in the NB project pane
+             (to be sure you are referencing all the JS files. --> 
+        <script src="js/content/blogContent.js"></script>
+        <script src="js/content/homeContent.js"></script>
+        <script src="js/content/objContent.js"></script>
+
+        <script src="js/reusable/MakeNavRouter.js"></script>
+
+
+        <script>
+
+            // Making a simple nav bar with just two links: Home | Blog
+
+            var myNavList = [
+
+                // action attribute is a function name - no quotes aroudnd home.
+                {linkText: "Home", linkURL: "#/home", action: homeContent},
+
+                // action attribute is a function name - no quotes around blog.
+                {linkText: "Blog", linkURL: "#/blog", action: blogContent}
+            ];
+
+            var myNav = MakeNavRouter({
+                navId: "nav", // this is where the nav bar will be injected
+                navList: myNavList, // the list of link objects (linkText, linkURL, actions)
+                contentId: "content", // the id where content is to be injected
+                startLink: "#/home"     // routing will set this as the first link. 
+            });
+
+        </script>
+    </body>
+</html>
