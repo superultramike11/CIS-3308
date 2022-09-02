@@ -20,9 +20,9 @@ Dynamically creating an array of objects using JavaScript.
             "use strict";
             
             var myObjArray = [
-                {partNo: 1111, partDesc: "hammer"},
-                {partNo: 2222, partDesc: "nails"},
-                {partNo: 3333, partDesc: "drill"}
+                {albumNo: 1, albumName: "Pablo Honey", albumRating: "Bad"},
+                {albumNo: 2, albumName: "The Bends", albumRating: "Good"},
+                {albumNo: 3, albumName: "Ok Computer", albumRating: "Masterpiece"}
             ];
            
            
@@ -30,8 +30,9 @@ Dynamically creating an array of objects using JavaScript.
 
             var out = "";
             for (var i = 0; i < myObjArray.length; i++) {
-                out += "part number is " + myObjArray[i].partNo +
-                        ", description is " + myObjArray[i].partDesc + "<br/>";
+                out += "album number is " + myObjArray[i].albumNo +
+                        ", description is " + myObjArray[i].albumName +
+                            ", rating is " + myObjArray[i].albumRating +  "<br/>";
             }
 
             out += "<br/><br/><h3>Again...</h3>"
@@ -39,8 +40,9 @@ Dynamically creating an array of objects using JavaScript.
             // here's another way to iterate over array elements...
             // it's called "for - of"
             for (var part of myObjArray) {
-                out += "part number is " + part.partNo +
-                        ", description is " + part.partDesc + "<br/>";
+                out += "part number is " + part.albumNo +
+                        ", description is " + part.albumName +
+                            ", rating is " + part.albumRating + "</br>";
             }
 
             document.getElementById("show").innerHTML = out;

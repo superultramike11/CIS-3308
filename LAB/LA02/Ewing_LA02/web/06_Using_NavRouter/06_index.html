@@ -50,7 +50,7 @@
              (to be sure you are referencing all the JS files. --> 
         <script src="js/content/blogContent.js"></script>
         <script src="js/content/homeContent.js"></script>
-        <script src="js/content/objContent.js"></script>
+        <script src="js/content/infoContent.js"></script>
 
         <script src="js/reusable/MakeNavRouter.js"></script>
 
@@ -65,7 +65,10 @@
                 {linkText: "Home", linkURL: "#/home", action: homeContent},
 
                 // action attribute is a function name - no quotes around blog.
-                {linkText: "Blog", linkURL: "#/blog", action: blogContent}
+                {linkText: "Blog", linkURL: "#/blog", action: blogContent},
+                
+                // action attribute is a function name - no quotes around info.
+                {linkText: "Info", linkURL: "#/info", action: infoContent}
             ];
 
             var myNav = MakeNavRouter({

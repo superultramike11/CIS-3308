@@ -71,6 +71,10 @@
             #page3 {
                 background-color: violet;
             }
+            
+            #info {
+                background-color: lightgreen;
+            }
 
             /* Media query: apply these rules when browser screen > 479px */
             @media screen and (min-width: 480px) {
@@ -111,6 +115,7 @@
                 <li><a href="#page1">p1</a></li>
                 <li><a href="#page2">p2</a></li>
                 <li><a href="#page3">p3</a></li>
+                <li><a href="#info">Info</a></li>
             </ul>
 
 
@@ -145,6 +150,14 @@
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
+            
+            <!-- Info Page -->
+            <div id="info" class="sng-page">
+                <h1>Information ! </h1>
+                <p>
+                    Put some info here -- I have over 95 records in my vinyl collection.
+                </p>
+            </div>
         </div>
 
         <!-- Footer. This takes a 180px height; adjust as needed -->
@@ -162,10 +175,14 @@
 
             // Whenever a link is clicked (or window.location.hash changes), invoke function router
             window.addEventListener('hashchange', router);
-
             function router() {
                 console.log("you just clicked on this (internal) link: " +
                         location.hash);
+            }
+            
+            window.addEventListener('hashchange', selfmade);
+            function selfmade() {
+                console.log("I hope you'll enjoy link " + location.hash);
             }
 
             console.log("the hashchange event will invoke function 'router'");
