@@ -1,0 +1,10 @@
+
+.car {
+    background-color: lightgrey;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    margin: 1rem;
+}
+.car button {
+    background-color:lightblue;
+}

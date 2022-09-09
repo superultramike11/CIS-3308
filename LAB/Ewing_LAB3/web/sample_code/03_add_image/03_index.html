@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="car.css" rel="stylesheet" type="text/css" /> 
+
+        <style>
+            body {
+                font-family:sans-serif;
+                background-color: #DDEEFF; /* lightblue */
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Use Chrome: Press F12 to Open Up JS Console</h2>
+
+        <div id='carContainer'>
+        </div>
+
+        <script>
+            // prevent browser from auto-declaring (globally) 
+            // any referenced but undeclared variable. 
+            "use strict";
+        </script>
+
+        <script src="03_MakeCar.js"></script>
+        <script>
+
+            var carDiv1 = MakeCar("White Audi", "great", 5000, "pics/audi.png");
+            document.getElementById("carContainer").appendChild(carDiv1);
+
+            var carDiv2 = MakeCar("Red Pixar", "fair", 2500, "pics/redCar.png");
+            document.getElementById("carContainer").appendChild(carDiv2);
+
+        </script>
+    </body>
+</html>
