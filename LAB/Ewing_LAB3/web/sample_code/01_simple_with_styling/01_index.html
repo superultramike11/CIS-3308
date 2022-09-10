@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="car.css" rel="stylesheet" type="text/css" /> 
+
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <h2>Check for Errors in Chrome (Press F12 to Open Up JS Console)</h2>
+        <div id="container">
+        </div>
+
+        <script>
+            "use strict";
+        </script>
+        
+        <script src="01_MakeCar.js"></script>
+
+        <script>
+
+            var myCarObj = MakeCar("great", 5000);
+            document.getElementById("container").appendChild(myCarObj);
+
+            var yourCarObj = MakeCar("fair", 2500);
+            document.getElementById("container").appendChild(yourCarObj);
+
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
