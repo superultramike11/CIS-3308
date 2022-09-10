@@ -1,20 +1,24 @@
 "use strict";
-function MakeEmp(theName, theTitle, theSalary) {
+function MakeEmpParamObj(params) {
+    if (!params) {
+        // alert("please check console for error message");
+        throw "Error: MakeEmpParamObj requires a parameter object";
+    }
+    
     var empObj = document.createElement("div");
+    
+    empObj.name = params.name || "unknown name";
+    var title = params.title || "unknown title";
+    var salary = params.salary || "call for salary";
+    
+    var empImg = document.createElement("img");
+    empImg.src = params.image;
+    empObj.appendChild(empImg);
     
     // link the styling of empObj to all styles that start with ".emp"
     // which are in file emp.css
     empObj.classList.add("emp");
-    
-    // Public property made for name
-    empObj.name = theName;
-    
-    // title is private
-    var title = theTitle;
-    
-    // salary is private
-    var salary = theSalary;
-    
+   
     // Create an info div where emp info can be displayed
     var empInfo = document.createElement("div");
     empObj.appendChild(empInfo);
@@ -41,7 +45,7 @@ function MakeEmp(theName, theTitle, theSalary) {
     empObj.changeSalary = function(changeRate) {
         var n = Number(changeRate);
         console.log("changing salary by this rate: " + n);
-        price = price * (1 + n);
+        salary = salary * (1 + n);
         display(); // show updated price on the page
     };
     
@@ -87,7 +91,12 @@ function MakeEmp(theName, theTitle, theSalary) {
     
     // private function
     function formatCurrency(num) {
-        return num.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+        if(isNaN(num)) {
+            return num;
+        } else {
+            var numNum = parseFloat(num);
+            return numNum.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+        }
     }
     
     display(); // show inital properties on the page

@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 9, 2022, 1:15:19 PM
+    Author     : michael
+*/
+
+.emp {
+    background-color: lightblue;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    margin: 6rem;
+}
+
+.emp div {
+    margin: 0.5rem;
+}
+
+.emp button {
+    background-color:orange;
+    margin: 0.5rem;
+}
+
+.emp img {
+    margin: 0.5rem;
+}
