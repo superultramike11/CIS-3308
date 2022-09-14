@@ -11,6 +11,15 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <script src="MakeComponent.js"></script>
+        <script>
+            var component1 = MakeComponent("bat", 100);
+            var component2 = MakeComponent("ball", 50);
+            component1.aQty(11);
+            component2.stockId = "doll";
+
+            component1.print();
+            component2.print();
+         </script>
     </body>
 </html>

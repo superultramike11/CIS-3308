@@ -31,10 +31,12 @@
             var myCarObj = MakeCarParamList("great", 5000);
             document.getElementById("container").appendChild(myCarObj);
 
+            // 2 of this
             // Make a car div using a parameter object (properties passed must match properties expected)
             var yourCarObj = MakeCarParamObj( {condition: "fair", price: 2500} );
             document.getElementById("container").appendChild(yourCarObj);
-
+            
+            // one of this
             // Make a car div passing in an empty parameter object (accepting defaut values)
             var defaultCarObj = MakeCarParamObj( {} );
             document.getElementById("container").appendChild(defaultCarObj);

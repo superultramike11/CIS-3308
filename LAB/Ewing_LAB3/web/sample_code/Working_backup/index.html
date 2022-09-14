@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="emp.css">
+    </head>
+    <body>
+        <h2>Check for Errors in Chrome (Press F12 to Open Up JS Console)</h2>
+
+        <div id="container">
+        </div>
+
+        <script>
+            // prevent browser from auto-declaring (globally) 
+            // any referenced but undeclared variable. 
+            "use strict";
+        </script>
+        <script src="MakeEmp_paramObj.js"></script>
+
+        <script>
+            var emp1 = MakeEmpParamObj( {name: "Ed", title: "Boss", salary: 2500, image: "pics/ed.jpg"} );
+            document.getElementById("container").appendChild(emp1);
+            
+            var emp2 = MakeEmpParamObj( {name: "Frank", title: "Head Boss", salary: 200, image: "pics/frank.jpg"} );
+            document.getElementById("container").appendChild(emp2);
+            
+            var defaultEmpObj = MakeEmpParamObj( {} );
+            document.getElementById("container").appendChild(defaultEmpObj);
+            /*
+            //                  name    title   salary
+            var emp1 = MakeEmp("Ed", "Boss", 90000, "pics/ed.jpg");
+            document.getElementById("container").appendChild(emp1);
+            
+            var emp2 = MakeEmp("Frank", "Mega Boss", 75000, "pics/frank.jpg");
+            document.getElementById("container").appendChild(emp2);
+            */
+        </script>
+    </body>
+</html>

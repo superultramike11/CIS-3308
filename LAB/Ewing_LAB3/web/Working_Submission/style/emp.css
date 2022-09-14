@@ -9,11 +9,21 @@ and open the template in the editor.
 */
 
 .emp {
-    background-color: lightgrey;
+    background-color: lightblue;
     border-radius: 0.25rem;
     padding: 0.25rem;
-    margin: 1rem;
+    margin: 6rem;
 }
+
+.emp div {
+    margin: 0.5rem;
+}
+
 .emp button {
-    background-color:lightblue;
+    background-color:orange;
+    margin: 0.5rem;
+}
+
+.emp img {
+    margin: 0.5rem;
 }
