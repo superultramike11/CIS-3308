@@ -1,3 +1,4 @@
+"use strict";
 function empContent() {
 
     // ` this is a "back tick". Use it to define multi-line strings in JavaScript.

@@ -2,13 +2,14 @@
 <!-- HTML comments must be like this... -->
 <html>
     <head>
-        <title>Title Nav Using Flexbox</title>
+        <title>HOMEWORK 3</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="shortcut icon" href="icons/smiley.png" />  
 
         <link href="style/main.css" rel="stylesheet" type="text/css" />  
+        <link href="style/album.css" rel="stylesheet" type="text/css" /> 
         <link href="style/myNavRouter.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -21,12 +22,10 @@
             </div>
         </div>
         <div id="content">
-
             <!-- HTML comment: 
                 The content div is empty. It will get content "injected into it"
                 by the NavRouter component.
             -->
-
         </div> <!-- end of content area -->
         <div id="footer">
             Michael Ewing
@@ -40,10 +39,12 @@
 
         <!-- Suggest you keep these in the same order as you see them in the NB project pane --> 
         <script src="js/reusable/MakeNavRouter.js"></script>
+        <script src="js/reusable/MakeAlbum.js"></script>
 
         <script src="js/content/blogContent.js"></script>
         <script src="js/content/homeContent.js"></script>
         <script src="js/content/registerContent.js"></script>
+        <script src="js/content/albumContent.js"></script>
 
         <script>
 
@@ -68,7 +69,7 @@
                 {
                     header: "Search",
                     subMenu: [
-                        {linkText: "Make Objects"},
+                        {linkText: "My Objects", linkURL: "#/makeAlbum", action: albumContent},
                         {linkText: "Slide Show"},
                         {linkText: "Click Sort"}
                     ]
