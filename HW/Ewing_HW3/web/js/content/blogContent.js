@@ -46,6 +46,18 @@ function blogContent() {
                 links between all of the function calls between HTML, CSS, and JavaScript. I'm a lover of the C language so
                 it's been a very interesting transition to say the least.
             </p>
+    
+            <h2>Database Homework Difficulty</h2>
+            <p>
+                Before this assignment I had little to no experience in databases. With the only possible knowledge I had
+                were old MySQL commands in my first web design class back in highschool.
+            </p>
+            <p>
+                In regards to this week's homework, I found it decently difficult given that MySQL Workbench is completely new to me.
+                Besides the difficulty of understanding the content, MySQL Workbench just feels extremely clunky and unresponsive at times 
+                (freezing up on the simpliest commands, etc). Other then that, you can view my final product pdf
+                <a target="_blank" href="pics/ewing_database.pdf">here</a>
+            </p>
 
             <!--Main Site Image-->
             <p style="text-align:center;">
