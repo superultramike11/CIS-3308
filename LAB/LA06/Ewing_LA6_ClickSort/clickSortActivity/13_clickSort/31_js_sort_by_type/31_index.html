@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            body {
+                font-family: sans-serif;
+                background-color: #F8F8F8;
+            }
+        </style> 
+    </head>
+    <body>
+        <p>
+            In this version (still using the JavaScript sort method), we convert the values in the sort 
+            column to the proper type before comparing.   
+            For example, a value "$1,234.56" will be converted to 1234.56 and "1/2/2020" 
+            will be converted to an actual date (not String). With this example, the sort by 
+            Availability Date and sort by Price work properly (unlike the previous example). 
+        </p>
+        <p>
+            Note that I have included really old dates because JS has a "weird" way of 
+            handling dates. A date in JS is actually the number of milliseconds since Jan 1, 1970 (which 
+            seems a bit arbitrary to me). Since this has caused me problems before, I added a big offset, 
+            making my date comparison values be the number of milliseconds from Jan 1, 1800. 
+        </p>
+        <div style="text-align:center; margin:auto;">
+            <h3>Sort By
+                <button onclick="sortByMake()">Make</button>
+                <button onclick="sortByImage()">Image (Error)</button>
+                <button onclick="sortByCondition()">Condition</button>
+                <button onclick="sortByPrice()">Price</button>
+                <button onclick="sortByAvailable()">Availability Date</button>
+            </h3>
+            <div id="listHere" class="clickSort"></div>
+        </div>
+
+        <script src="js/jsSort.js"></script>
+        <script src="js/MakeTableBetter.js"></script>
+        <script src="js/SortableTableUtils.js"></script>
+
+        <script>
+                    "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+                    function inject(ele, where) {
+                        document.getElementById(where).innerHTML = ""; // blank out content area before appending
+                        document.getElementById(where).appendChild(ele);
+                    }
+
+                    var carList = [
+                        {make: "Buick", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png", available: "2/1/1890", condition: "poor", price: 15000},
+                        {make: "Ford", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png", available: "1/2/2020", condition: "great", price: 9000},
+                        {make: "Audi", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/audi.png", available: "12/27/2019", condition: "excellent", price: "$5000"},
+                        {make: "Pixar", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/pixar.png", available: "9/7/1940", condition: "fair", price: 21000}
+                    ];
+
+                    var newCarList = []; // empty array
+                    // modify properties (image and price) of the array of objects so it will look 
+                    // better on the page.
+                    for (var i = 0; i < carList.length; i++) {
+                        newCarList[i] = {}; // i-th element of array is empty object.
+                        newCarList[i].Make = SortableTableUtils.makeText(carList[i].make);
+                        newCarList[i]._Image = SortableTableUtils.makeImage(carList[i].image, "10rem");
+                        newCarList[i].Condition = SortableTableUtils.makeText(carList[i].condition);
+                        newCarList[i].Price = SortableTableUtils.makeNumber(carList[i].price, true); // true --> format as currency
+                        newCarList[i].Available = SortableTableUtils.makeDate(carList[i].available);
+                    }
+
+                    function sortByMake() {
+                        jsSort(newCarList, "Make");
+                        inject(MakeTableBetter("Cars For Sale", newCarList), "listHere");
+                    }
+
+                    function sortByImage() {
+                        jsSort(newCarList, "_Image");
+                        inject(MakeTableBetter("Cars For Sale", newCarList), "listHere");
+                    }
+
+                    function sortByCondition() {
+                        jsSort(newCarList, "Condition"); // can choose any of the car's properties for the sort
+                        inject(MakeTableBetter("Cars For Sale", newCarList), "listHere");
+                    }
+
+                    function sortByAvailable() {
+                        jsSort(newCarList, "Available");
+                        inject(MakeTableBetter("Cars For Sale", newCarList), "listHere");
+                    }
+
+                    function sortByPrice() {
+                        jsSort(newCarList, "Price");
+                        inject(MakeTableBetter("Cars For Sale", newCarList), "listHere");
+                    }
+
+                    // initial display shows original order of data (not sorted).
+                    inject(MakeTableBetter("Cars For Sale", newCarList), "listHere");
+        </script>
+
+    </body>
+</html>

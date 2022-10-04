@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--   comment   -->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Parameter Object: Press F12 to See Console Output</h2>
+        <script>
+
+            function favoritesParamList (color, food) {
+                console.log("your favorite color is " + color);
+                console.log('and your favorite food is ' + food);
+                console.log('...');
+            }
+
+            function favoritesParamObj (params) {
+                var color = params.color || "red";
+                var food = params.food || "pizza";
+                console.log("your favorite color is " + color);
+                console.log('and your favorite food is ' + food);
+                console.log('...');
+            }
+
+            function favoritesParamObjCheckFirst(params) {
+                if (!params) {
+                    params = {};
+                }
+                var color = params.color || "red";
+                var food = params.food || "pizza";
+                console.log("favoritesParamObj");
+                console.log("your favorite color is " + color);
+                console.log('and your favorite food is ' + food);
+                console.log('...');
+            }
+
+            console.log("passing a parameter list (green, ice cream)");
+            favoritesParamList("green", "ice cream");
+
+            console.log("defining an object with color purple and food apple (then passing that in)");
+            var myObj = {color: "purple", food: "apple"};
+            favoritesParamObj(myObj);
+
+            console.log("defining an object in the function call pink/chocolate");
+            favoritesParamObj({color: "pink", food: "chocolate"});
+
+            console.log("passing one property (color blue) gets you the default for the other property (food=pizza)");
+            favoritesParamObj({color: "blue"});
+
+            console.log("passing in an empty object gets you both default values (color=red and food=pizza)");
+            favoritesParamObj({});
+
+            console.log("passing no object is OK if the function checks for the existence of the parameter obect");
+            favoritesParamObjCheckFirst();
+
+            // passing in nothing (with the version that does not check for existence of the parameter object),
+            // gets you a runtime error 
+            console.log("passing no object is not OK if the function accesses the parameter obect without checking first");
+            favoritesParamObj();
+
+        </script>
+    </body>
+</html>

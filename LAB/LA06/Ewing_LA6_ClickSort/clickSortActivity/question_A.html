@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Click Sort Lab Activity</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .extractProps {
+                background-color: #DDEEDD; /* light green */
+                padding: 0.5rem;
+                margin:0.5rem;
+            }
+            .extractProps p {
+                background-color: #DDDDFF; /* light blue */
+                padding: 0.5rem;
+                margin: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Question A: Extract Properties and Values from Object</h3>
+
+        <div id="content" class="extractProps">
+        </div>
+
+        <script src="js/extractPropsAndValues.js"></script>
+
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+            // this makes it so the browser will let us know when we have forgotten to declare a variable, 
+            // e.g., if we mispell a variable name. 
+
+            function injectAppend(ele, toId) {
+                document.getElementById(toId).appendChild(ele);
+            }
+
+
+            // ***** question A. See 21_makeTable_simple for help *****
+            var myDiv1 = extractPropsAndValues({classNum: "CIS 1068", numStudents: 50, semester: "fall", year: 2020});
+            injectAppend(myDiv1, "content");
+
+            var myDiv2 = extractPropsAndValues({empName: "Fred Jones", salary: "$75,000", birthYear: 1980});
+            injectAppend(myDiv2, "content");
+
+        </script>
+    </body>
+</html>

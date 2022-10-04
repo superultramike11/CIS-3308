@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- HTML comments must be like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="shortcut icon" href="icons/smiley.png" />  
+
+        <link href="style/NavRouter.css" rel="stylesheet" type="text/css" />  
+        <link href="style/main.css" rel="stylesheet" type="text/css" />  
+
+        <style>
+
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+
+            </div>
+        </div>
+        <div id="content">
+
+            <!-- HTML comment: 
+                The content div is empty. It will get content "injected into it"
+                by the NavRouter component.
+            -->
+
+        </div> <!-- end of content area -->
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+
+
+        <!-- Make sure "use strict"; is first line of JS code that is run... -->
+        <script>
+            "use strict";
+        </script>
+
+        <!-- Suggest you keep these in the same order as you see them in the NB project pane
+             but put reusable first --> 
+        <script src="js/reusable/MakeNavRouter.js"></script>
+
+
+        <script src="js/content/blogContent.js"></script>
+        <script src="js/content/homeContent.js"></script>
+
+        <script>
+
+            // Home | Account | Search | Tutorial | Blog
+
+            var myNavList = [
+
+                // action attribute is a function name - no quotes aroudnd home.
+                {linkText: "Home", linkURL: "#/home", action: homeContent},
+                {
+                    header: "Account",
+                    subMenu: [
+
+                        // An object with linkText but no linkURL/action is a non-functional link... 
+                        {linkText: "Register"},
+                        {linkText: "Log In"},
+                        {linkText: "Log Out"},
+                        {linkText: "Profile"}
+                    ]
+                },
+                {
+                    header: "Search",
+                    subMenu: [
+                        {linkText: "Users API", linkURL: "#/usersAPI", action: "webAPIs/listUsersAPI.jsp"},
+                        {linkText: "Other API", linkURL: "#/otherAPI", action: "webAPIs/listOtherAPI.jsp"}
+                    ]
+                },
+                {
+                    header: "Tutorial",
+                    subMenu: [
+                        {linkText: "Proposal", linkURL: "#/proposal", action: "tutorial/proposal.pdf"},
+                        {linkText: "Proof Of Concept", linkURL: "#/poc", action: "tutorial/poc.html"},
+                        {linkText: "Demo", linkURL: "#/tutDemo", action: "tutorial/demo.html"},
+                        {linkText: "Tutorial Home", linkURL: "#/tutHome", action: "tutorial/index.html"}
+                    ]
+                },
+                // action attribute is a function name - no quotes around blog.
+                {linkText: "Blog", linkURL: "#/blog", action: blogContent}
+            ];
+            var myNav = MakeNavRouter({
+                navId: "nav", // this is where the nav bar will be injected
+                navList: myNavList, // the list of link objects (linkText, linkURL, actions)
+                contentId: "content", // the id where content is to be injected
+                startLink: "#/home"     // routing will set this as the first link. 
+            });
+
+        </script>
+    </body>
+</html>

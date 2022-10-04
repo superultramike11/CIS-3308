@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            body {
+                font-family: sans-serif;
+                background-color: #F8F8F8;
+            }
+        </style> 
+    </head>
+    <body>
+        <p>
+            In this version the HTML page allows the user to sort the list by a couple of fields 
+            (both character type). After each sort, another call to MakeTable is made and the 
+            new HTML table is redisplayed on the page. This version uses the
+            classic "selection sort" and it only sorts alphabetically (no type conversion).
+        </p>
+        <div style="text-align:center; margin:auto;">
+            <h3>Sort By: 
+                <button onclick="sortByMake()">Make</button>
+                <button onclick="sortByCondition()">Condition</button>
+            </h3>
+
+            <div id="listHere" class="clickSort"></div>
+        </div>
+
+        <script src="js/sort.js"></script>
+        <script src="js/MakeTableBasic.js"></script>
+
+        <script>
+                    "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+                    function inject(ele, where) {
+                        document.getElementById(where).innerHTML = ""; // blank out content area before appending
+                        document.getElementById(where).appendChild(ele);
+                    }
+
+                    // last two objects are there to see how it handles "weird" objects.
+                    var carList = [
+                        {make: "Chevrolet", condition: "fair", price: 21000, available: "1/2/2022"},
+                        {make: "Buick", condition: "great", price: "$15,000", available: "12/27/2021"},
+                        {make: "Ford", condition: "awesome", price: "x5000", available: "3/4/2020"},
+                     ];
+
+                    function sortByMake() {
+                        sort(carList, "make"); // can choose any of the car's properties for the sort
+                        console.log("after sorting by Make");
+                        console.log(carList);
+                        inject(MakeTableBasic("Cars For Sale", carList), "listHere");
+                    }
+
+                    function sortByCondition() {
+                        sort(carList, "condition"); // can choose any of the car's properties for the sort
+                        console.log("after sorting by Condition");
+                        console.log(carList);
+                        inject(MakeTableBasic("Cars For Sale", carList), "listHere");
+                    }
+
+                    // The initial sort order will show the objects in their original order (not sorted). 
+                    inject(MakeTableBasic("Cars For Sale", carList), "listHere");
+
+        </script>
+
+    </body>
+</html>

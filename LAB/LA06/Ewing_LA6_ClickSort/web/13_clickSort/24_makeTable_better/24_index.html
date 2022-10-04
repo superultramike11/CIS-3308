@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+
+            body {
+                font-family: sans-serif;
+            }
+        </style> 
+    </head>
+    <body>
+        <h3>Simple MakeTable</h3>
+        <p>
+            This demonstrates Provider Style code that takes an array of objects 
+            and returns an HTML table (one row per object, one column per property 
+            of the objects). It does not add column headings, image file names 
+            have not been converted to image tags, and 
+            it does not try to align the data according to data type. 
+            The column headings have no click sort ability.
+        </p>
+        <p>
+            The styling is very basic but has been separated into an external style sheet that only applies 
+            to the click-sortable table.
+        </p>
+
+        <div id="listHere" class="clickSort">
+        </div>
+
+        <script src="js/MakeTableBetter.js"></script>
+        <script src="js/TableUtils.js"></script>
+        <script>
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            // last two objects are there to see how it handles "weird" objects.
+            var carList = [
+                {make: "Chevrolet", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/white_audi.png", condition: "fair", price: 21000, available: "1/2/2022"},
+                {make: "Buick", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png", condition: "great", price: "$15,000", available: "12/27/2021"},
+                {make: "Ford", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png", condition: "poor", price: "x5000", available: "3/4/2020"},
+                { image: "http://cis-linux2.temple.edu/~sallyk/pics_car/default_car.png" }, 
+                {}
+            ];
+
+            var newCarList = []; // empty array
+            // modify properties (image and price) of the array of objects so it will look 
+            // better on the page.
+            for (var i = 0; i < carList.length; i++) {
+                newCarList[i] = {}; // i-th element of array is empty object.
+                newCarList[i].Make = TableUtils.makeText(carList[i].make);
+                newCarList[i].Image = TableUtils.makeImage(carList[i].image, "10rem");
+                newCarList[i].Condition = TableUtils.makeText(carList[i].condition);
+                newCarList[i].Price = TableUtils.makeNumber(carList[i].price, true); // true --> format as currency
+                newCarList[i].Available = TableUtils.makeDate(carList[i].available);
+            }
+
+            document.getElementById("listHere").appendChild(MakeTableBetter("Cars For Sale", newCarList));
+
+        </script>
+
+    </body>
+</html>

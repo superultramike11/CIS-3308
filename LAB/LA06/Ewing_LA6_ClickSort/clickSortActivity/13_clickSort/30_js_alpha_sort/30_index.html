@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            body {
+                font-family: sans-serif;
+                background-color: #F8F8F8;
+            }
+        </style> 
+    </head>
+    <body>
+        <p>
+            This version uses the sort method that is built into any JS array. The call to invoke the JS sort 
+            method looks like this: <strong>arrayName.sort(func)</strong> where func is a function that takes two input 
+            parameters (both inputs are an element from the array) and returns 
+            one of three possibilities: 1 (if first object > second), -1 (if first object &lt; second), 0 (otherwise, 
+            objects equal). 
+        </p>
+        <p>
+            This sort is also just an alphabetic sort (no type conversion). I have added a "sort by price" 
+            button to show the problem. We'll add type conversion to a future version of sort. 
+        </p>
+        <div style="text-align:center; margin:auto;">
+            <h3>Sort By
+                <button onclick="sortByMake()">Make</button>
+                <button onclick="sortByCondition()">Condition</button>
+                <button onclick="sortByPrice()">Price (Does Not Work As Expected)</button>
+            </h3>
+            <div id="listHere" class="clickSort"></div>
+        </div>
+
+        <script src="js/jsSort.js"></script>
+        <script src="js/MakeTableBasic.js"></script>
+
+        <script>
+                    "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+                    function formatCurrency(num) {
+                        var myNum = Number(num);
+                        return myNum.toLocaleString("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2});
+                    }
+
+                    var carList = [
+                        {make: "Buick", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png", condition: "poor", price: 150000},
+                        {make: "Ford", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png", condition: "great", price: 9000},
+                        {make: "Audi", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/white_audi.png", condition: "awesome", price: 21000}
+                    ];
+
+                    // modify properties (image and price) of the array of objects so it will look 
+                    // better on the page.
+                    for (var i = 0; i < carList.length; i++) {
+                        carList[i].image = "<img  src='" + carList[i].image + "' style='width:10rem'>";
+                        carList[i].price = formatCurrency(carList[i].price);
+                    }
+
+                    function inject(ele, where) {
+                        document.getElementById(where).innerHTML = ""; // blank out content area before appending
+                        document.getElementById(where).appendChild(ele);
+                    }
+
+                    function sortByMake() {
+                        jsSort(carList, "make"); 
+                        inject(MakeTableBasic("Cars For Sale", carList), "listHere");
+                    }
+
+                    function sortByCondition() {
+                        jsSort(carList, "condition"); 
+                        inject(MakeTableBasic("Cars For Sale", carList), "listHere");
+                    }
+
+                    function sortByPrice() {
+                        jsSort(carList, "price"); 
+                        inject(MakeTableBasic("Cars For Sale", carList), "listHere");
+                    }
+
+                    // no initial sort - just make the table and display it
+                    inject(MakeTableBasic("Cars For Sale", carList), "listHere");
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+
+            body {
+                font-family: sans-serif;
+                background-color: #F8F8F8;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            #container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            #carReport {
+                width: 40%;
+            }
+
+            #userReport {
+                width: 60%;
+            }
+
+
+        </style> 
+    </head>
+    <body>
+        <h3>Must RUN not View, uses AJAX (browser requests from Apache Web Server)</h3>
+        <p>
+            This version creates two click sortable tables from two JSON file 
+            and then places these tables side by side on the page.  
+        </p>
+
+        <div id="container">
+            <div id="carReport" class="clickSort"></div>
+            <div id="userReport" class="clickSort"></div>
+        </div>
+
+
+        <script src="js/ajax.js"></script>
+        <script src="js/MakeTableBetter.js"></script>
+        <script src="js/TableUtils.js"></script>
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            // invoke ajax function to read cars.json and if the call was successful, 
+            // run function processJSON, otherwise, put an error message in the DOM element 
+            // that has id "listHere".
+            ajax("json/cars.json", processCarData, document.getElementById("carReport"));
+
+            function processCarData(carList) {
+
+                console.log(carList);  // car list as an array of objects
+
+                /*    
+                 "make": "Buick",
+                 "photo": "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png",
+                 "condition": "great",
+                 "price": "15000"
+                 */
+
+                var newCarList = []; // empty array
+                // modify properties (image and price) of the array of objects so it will look 
+                // better on the page.
+                for (var i = 0; i < carList.length; i++) {
+                    newCarList[i] = {}; // i-th element of array is empty object.
+                    newCarList[i].Make = TableUtils.makeText(carList[i].make);
+                    newCarList[i].Image = TableUtils.makeImage(carList[i].photo, "10rem");
+                    newCarList[i].Condition = TableUtils.makeText(carList[i].condition);
+                    
+                    // true means format like currency
+                    newCarList[i].Price = TableUtils.makeNumber(carList[i].price, true);
+                }
+
+                // Making a DOM object, nothing shows yet... 
+                document.getElementById("carReport").appendChild(MakeTableBetter("Car Sale", newCarList));
+
+            }
+
+
+            // invoke ajax function to read cars.json and if the call was successful, 
+            // run function processJSON, otherwise, put an error message in the DOM element 
+            // that has id "listHere".
+            ajax("json/users.json", processUserData, document.getElementById("userReport"));
+
+            function processUserData(userList) {
+
+                // print out JS object/array that was converted from JSON data by ajax function
+                console.log(userList);
+
+                // build new list as we want the fields to appear in the HTML table
+                // we can decide the order we want the fields to appear (first property defined is shown first)
+                // we can combine, decide to exclude etc...
+                var newUserList = [];
+
+                // modify properties (image and price) of the array of objects so it will look 
+                // better on the page.
+                for (var i = 0; i < userList.length; i++) {
+
+                    newUserList[i] = {};
+                    // Don't show the id (no meaningful data)
+                    newUserList[i].Image = TableUtils.makeImage(userList[i].image, "5rem");
+                    newUserList[i].Email = TableUtils.makeText(userList[i].userEmail);
+                    // Don't show the password
+                    newUserList[i].Birthdate = TableUtils.makeText(userList[i].birthday);
+                    
+                    // true means format like currency
+                    newUserList[i].MembershipFee = TableUtils.makeNumber(userList[i].membershipFee);
+                    
+                    newUserList[i].Role = TableUtils.makeText(userList[i].userRoleId + " " + userList[i].userRoleType);
+                }
+
+
+                /*    
+                 "webUserId": "2",
+                 "userEmail": "dominic@temple.edu",
+                 "userPassword": "p",
+                 "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/dominic.jpg",
+                 "birthday": "",
+                 "membershipFee": "$1,000.99",
+                 "userRoleId": "3",
+                 "userRoleType": "Member",
+                 "errorMsg": ""
+                 */
+
+                // Making a DOM object, nothing shows yet... 
+                document.getElementById("userReport").appendChild(MakeTableBetter("The CIS Club", newUserList));
+            }
+
+        </script>
+    </body>
+</html>

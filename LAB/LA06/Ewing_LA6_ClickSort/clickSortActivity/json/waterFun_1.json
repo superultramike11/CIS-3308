@@ -1,0 +1,39 @@
+[
+
+    {
+        "make": "Jet Ski",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_png/jetski.png",
+        "condition": "superb",
+        "price": "5000"
+    },
+    {
+        "make": "Kayak",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_png/kayak.png",
+        "condition": "fair",
+        "price": "1000"
+    },
+    {
+        "make": "Pontoon Boat",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_png/pontoon.png",
+        "condition": "good",
+        "price": "30000"
+    },
+    {
+        "make": "Sailboat",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_png/sail.png",
+        "condition": "excellent",
+        "price": "15000"
+    },
+    {
+        "make": "Ski Boat",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_png/skiBoat.png",
+        "condition": "poor",
+        "price": "50000"
+    },
+    {
+        "make": "Lake Vacation",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_png/sunsetOnLake.png",
+        "condition": "good",
+        "price": "2000"
+    }
+]

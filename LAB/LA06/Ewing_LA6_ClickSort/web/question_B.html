@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Click Sort Lab Activity</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+            #container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            #container .clickSort {
+                width:50%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align:center">Question B: MakeTableBetter from Object Lists</h1>
+
+        <div id="container">
+        </div>
+
+
+        <script src="js/MakeTableBetter.js"></script>
+        <script src="js/TableUtils.js"></script>
+
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+            // So, if we mispell a variable name, the browser will not auto-declare a new variable.  
+
+            function injectAppend(ele, toId) {
+                document.getElementById(toId).appendChild(ele);
+            }
+
+            // ***** THE FIRST COMPONENT IS DONE FOR YOU *****
+
+            var userList = [
+                {
+                    "userEmail": "sallyk@gmail.com",
+                    "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/sallyk.jpg",
+                    "birthday": "02/02/1997"
+                },
+                {
+                    "userEmail": "slobodan@gmail.com",
+                    "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/slobodan.jpg",
+                    "birthday": "02/02/1997"
+                },
+                {
+                    "userEmail": "zoran@gmail.com",
+                    "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/zoran.jpg",
+                    "birthday": "02/02/1997"
+                }
+            ];
+
+            var newUserList = [];
+            for (var i = 0; i < userList.length; i++) {
+                newUserList[i] = {};
+                newUserList[i].User_Email = TableUtils.makeText(userList[i].userEmail);
+                newUserList[i].Image = TableUtils.makeImage(userList[i].image, "4rem");
+                newUserList[i].Birthday = TableUtils.makeDate(userList[i].birthday);
+            }
+
+            
+            // ***** MODIFY THE CODE TO MAKE THE SECOND COMPONENT WORK
+
+            var myDiv1 = MakeTableBetter("CIS Club", newUserList);
+            myDiv1.classList.add("clickSort");
+            injectAppend(myDiv1, "container");
+
+            var funList = [
+                {item: "Jet Ski", pic: "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_jpg/jetski.jpg", price: "5000"},
+                {item: "Kayak", pic: "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_jpg/kayak.jpg", price: "1000"},
+                {item: "Pontoon Boat", pic: "http://cis-linux2.temple.edu/~sallyk/pics_waterFun_jpg/pontoon.jpg", price: "30000"}
+            ];
+
+            var newFunList = [];
+            for (var i = 0; i < funList.length; i++) {
+                newFunList[i] = {}; // i-th element of array is empty object
+                newFunList[i].Item = TableUtils.makeText(funList[i].item);
+                newFunList[i].Image = TableUtils.makeImage(funList[i].pic, "10rem");
+                newFunList[i].Price = TableUtils.makeNumber(funList[i].price, true);
+            }
+            // Here, create a new object list where all the properties of the objects 
+            // are <td> tags created by TableUtils.js. 
+            // See 24_makeTable_better (or the above example done for users) if you need help. 
+
+            var myDiv2 = MakeTableBetter("Water Fun", newFunList);
+            myDiv2.classList.add("clickSort");
+            injectAppend(myDiv2, "container");
+
+
+        </script>
+    </body>
+</html>
