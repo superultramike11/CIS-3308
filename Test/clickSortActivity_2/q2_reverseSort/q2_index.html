@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Click Sort Lab Activity</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: sans-serif;
+                line-height: 1.5rem;
+            }
+            .container {
+                background-color: #DDEEDD; /* light green */
+                padding: 0.5rem;
+                margin:1rem;
+                display:flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .container div {
+                background-color: #DDDDFF; /* light blue */
+                padding: 0.5rem;
+                margin: 1rem 1%; /* 1st is top/bottom, 2nd is left/right */
+                width: 23%;
+                box-sizing:border-box;
+                border: thin solid black;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Question 2: Reverse Sort</h2>
+
+        <h4 style="margin-left: 1.5rem">
+            Requirements: 
+        </h4>
+        <ul>
+            <li>
+                Function MakeListDiv takes in a list of character strings and an order (expected to be 
+                either "forward" or "reverse"). Right now, MakeListDiv ignores the order parameter 
+                and simply sorts the lists in forward order using the JavaScript sort method 
+                (a built-in method that is available on all JS arrays). 
+                Modify function MakeListDiv so that it takes 
+                into account the order parameter and either sorts the list in forward or reverse order. 
+            </li>
+            <li>
+                All your work will be done in function MakeListDiv. This index page should be left as is.
+            </li>
+            <li>
+                Testing: if you have programmed correctly, the first list should be reverse sorted while the 
+                second list is forward sorted. 
+            </li>
+            <li>
+                Sample code: jsSort.js has been copied in from folder 30_js_alpha_sort (where the sort function
+                forward sorts alphabetically by any property of a given list of objects). A simpler form 
+                of this sort function was added as a private function into MakeListDiv - 
+                this simpler sort expects just an array of 
+                character strings, not an array of objects. 
+            </li>
+        </ul>
+
+        <div id="content" class="container">
+        </div>
+
+        <script src="MakeListDiv.js"></script>
+        <!-- 
+             There's no need to reference the jsSort.js script tag. It is not used, 
+             just provided as a resource. 
+        -->
+
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+            // this makes it so the browser will let us know when we have forgotten to declare a variable, 
+            // e.g., if we mispell a variable name. 
+
+            var firstList = [
+                "oranges",
+                "cherries",
+                "peaches",
+                "apples",
+                "strawberries"
+            ];
+            document.getElementById("content").appendChild(MakeListDiv(firstList, "reverse"));
+
+            var secondList = [
+                "sailboat",
+                "kayak",
+                "ski boat",
+                "pontoon boat",
+                "jet ski"
+            ];
+            document.getElementById("content").appendChild(MakeListDiv(secondList,"forward"));
+
+
+        </script>
+    </body>
+</html>

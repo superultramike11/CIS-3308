@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Click Sort Lab Activity</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: sans-serif;
+                line-height: 1.5rem;
+            }
+            .filter {
+                background-color: #DDEEDD; /* light green */
+                padding: 0.5rem;
+                margin:1rem;
+            }
+            .filter p {
+                background-color: #DDDDFF; /* light blue */
+                padding: 0.5rem;
+                margin: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Question 5: Filter Data onkeyup</h2>
+
+        <h4 style="margin-left: 1.5rem">
+            Requirements: 
+        </h4>
+        <ul>
+            <li>
+                Starting with function MakeFilter that you created from the previous question, 
+                call the repopulate (private) function whenver the user types a key into the 
+                search input box. 
+                <ul>
+                    <li>
+                        There is some sample code that shows you how to add an onkeyup event 
+                        to an input box. 
+                        Feel free to use or replace the sample code. 
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Then, you can get rid of your Redisplay button. 
+            </li>
+        </ul>
+
+        <div id="content">
+        </div>
+
+        <script src="MakeFilter.js"></script>
+
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+            // this makes it so the browser will let us know when we have forgotten to declare a variable, 
+            // e.g., if we mispell a variable name. 
+
+            var firstArray = [
+                "2022 Toyota Camry",
+                "2022 Ford Mustang",
+                "2020 Toyota Sienna",
+                "2020 Toyota Camry"
+            ];
+
+            var myFilter1 = MakeFilter(firstArray);
+            myFilter1.classList.add("filter");
+            document.getElementById("content").appendChild(myFilter1);
+
+            var secondArray = [
+                "Joe Smith",
+                "Fred Jones",
+                "Joe Jones",
+                "Mary Smith"
+            ];
+
+            var myFilter2 = MakeFilter(firstArray);
+            myFilter2.classList.add("filter");
+            document.getElementById("content").appendChild(myFilter2);
+
+        </script>
+    </body>
+</html>

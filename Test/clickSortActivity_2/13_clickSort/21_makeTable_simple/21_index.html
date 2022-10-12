@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            /* 
+            The HTML coder can put their styles (unrelated to the component) 
+            either in an internal style sheet (like this) or in an external style sheet.
+            */
+            body {
+                font-family: sans-serif;
+                line-height: 1.5rem;
+            }
+            
+            h2, h4 {
+                text-align:center;
+            }
+
+        </style> 
+    </head>
+    <body>
+        <h2>Make Table Simple</h2>
+        <h4>(HTML Table With Single Data Row From Arbitrary Object)</h4>
+        <p>
+            This code demonstrates the first step in creating an HTML table component from an array of objects. 
+        </p>
+        <ul>
+            <li>
+                The component in this example returns an HTML table from a single object. 
+                It uses the object's poperty names as column headings, then it creates 
+                a single data row that shows the object's data values. 
+            </li>
+            <li>
+                We adhere to the JS file naming convention (the function that creates our component 
+                is stored in a JS file named the same as the function and there is no other code 
+                in that file). This helps us organize and find our JS functions. It also avoids 
+                polluting the global JavaScript name space. 
+            </li>
+            <li>
+                We also adhere to a similar CSS file naming convention. We create a CSS file named 
+                the same as the component. All CSS rules in the CSS file begin with a CSS class that 
+                is named the same as the CSS file. This helps us organize and find our CSS classes. 
+                It also avoids polluting the global CSS name space.
+            </li>
+        </ul>
+
+        <div id="listHere" class="clickSort">
+
+        </div>
+
+        <script src="js/MakeTableSimple.js"></script>
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            var carObj = {
+                Make: "Audi",
+                Image: "http://cis-linux2.temple.edu/~sallyk/pics_car/white_audi.png",
+                Condition: "fair",
+                Price: "$21,000"
+            };
+
+            document.getElementById("listHere").appendChild(MakeTableSimple(carObj));
+
+        </script>
+
+    </body>
+</html>

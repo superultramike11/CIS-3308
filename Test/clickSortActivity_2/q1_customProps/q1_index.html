@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Click Sort Lab Activity</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: sans-serif;
+                line-height: 1.5rem;
+            }
+            .container {
+                background-color: #DDEEDD; /* light green */
+                padding: 0.5rem;
+                margin:1rem;
+                display:flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .container div {
+                background-color: #DDDDFF; /* light blue */
+                padding: 0.5rem;
+                margin: 1rem 1%; /* 1st is top/bottom, 2nd is left/right */
+                width: 23%;
+                box-sizing:border-box;
+                border: thin solid black;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Question 1: Custom Properties of DOM Elements</h2>
+
+        <h4 style="margin-left: 1.5rem">
+            Requirements: 
+        </h4>
+        <ul>
+            <li>
+                Function MakeDiv takes in two character strings and returns a div that has the 
+                first character string as its innerHTML. Modify function MakeDiv so that it has 
+                a local variable (perhaps called currentValue). Set currentValue to the first character
+                string. Create a local function named display that places currentValue into the div's 
+                innerHTML property. Call this display function (in MakeDiv) before the div is returned.
+            </li>
+            <li>                
+                Add an onclick function to the div so that every time the div is clicked, 
+                currentValue alternates between the values of the first and second character 
+                string (and display is called again).
+            </li>
+            <li>
+                All your work will be done in function MakeDiv. This index page should be left as is.
+            </li>
+            <li>
+                Testing: when you click on "hot", it should change to "cold". When you click on "cold", 
+                it should change back to "hot" again (and keep alternating like this as many times as 
+                clicked). Likewise for the other divs...
+            </li>
+        </ul>
+
+    <p style="margin-left: 1.5rem">
+        Note: this exercise is relevant to the sort forward/reverse functionality that you have been asked 
+        to implement for your ClickSort Homework. In your CS homework, each &lt;th> tag needs to know 
+        whether (when next clicked), it should sort in forward or reverse order. It can do this by having 
+        a private local variable that keeps track of this. Your headers (&lt;th> tags) can have local private variables 
+        if you use a local function to create them (like function makeHeader in folder 34_clickSort), not 
+        as was done (iterating through, not calling a function to make the header, as in folder 36_filter). 
+    </p>
+
+    <div id="content" class="container">
+    </div>
+
+    <script src="MakeDiv.js"></script>
+
+    <script>
+
+        "use strict"; // turn off the "auto variable declaration" feature of the browser.
+        // this makes it so the browser will let us know when we have forgotten to declare a variable, 
+        // e.g., if we mispell a variable name. 
+
+        document.getElementById("content").appendChild(MakeDiv("hot", "cold"));
+        document.getElementById("content").appendChild(MakeDiv("tall", "short"));
+        document.getElementById("content").appendChild(MakeDiv("winter", "summer"));
+        document.getElementById("content").appendChild(MakeDiv("black", "white"));
+        document.getElementById("content").appendChild(MakeDiv("thin", "fat"));
+
+    </script>
+</body>
+</html>

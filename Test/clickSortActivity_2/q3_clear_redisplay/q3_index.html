@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Click Sort Lab Activity</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: sans-serif;
+                line-height: 1.5rem;
+            }
+            .filter {
+                background-color: #DDEEDD; /* light green */
+                padding: 0.5rem;
+                margin:1rem;
+            }
+            .filter p {
+                background-color: #DDDDFF; /* light blue */
+                padding: 0.5rem;
+                margin: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Question 3: Clear and Redisplay Data</h2>
+        <h4 style="margin-left: 1.5rem">Requirements</h4>
+
+        <ul>
+            <li>
+                Function MakeFilter already takes in an array of character strings and 
+                returns a container div. MakeFilter already puts an inner div inside the 
+                container div. Modify function MakeFilter so that the inner div has one 
+                paragraph per element of the input array. Set the innerHTML of each paragraph 
+                to be the corresponding String element from the array. 
+                <ul>
+                    <li>
+                        MakeFilter has some sample code that reminds you how to create a paragraph, 
+                        create a button, set innerHTML, add onclick event, and append to a parent element. 
+                        Feel free to use or replace this code. 
+                    </li>
+                </ul>
+            </li>
+            <li>
+                After the inner div, the container div shall hold two buttons: "Clear" and "Redisplay". 
+            </li>
+            <li>
+                When the user clicks the "Clear" button, the inner div shall be emptied 
+                out (innerDiv.innerHTML = ""). 
+            </li>
+            <li>
+                When the user clicks the "Redisplay" button, the inner div shall again 
+                be repopulated (as it was initially). Do not copy paste. Use a single private 
+                function (to populate the innerDiv with paragraphs) and call it twice 
+                (once initially and again from the Redisplay button). 
+            </li>
+            <li>
+                There's no need to modify anything from this index page. All of your work 
+                will be done in MakeFilter.js. 
+            </li>
+        </ul>
+
+        <div id="content">
+        </div>
+
+        <script src="MakeFilter.js"></script>
+
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+            // this makes it so the browser will let us know when we have forgotten to declare a variable, 
+            // e.g., if we mispell a variable name. 
+
+            var firstArray = [
+                "2022 Toyota Camry",
+                "2022 Ford Mustang",
+                "2020 Toyota Sienna",
+                "2020 Toyota Camry"
+            ];
+
+            var myFilter1 = MakeFilter(firstArray);
+            myFilter1.classList.add("filter");
+            document.getElementById("content").appendChild(myFilter1);
+
+            var secondArray = [
+                "Joe Smith",
+                "Fred Jones",
+                "Joe Jones",
+                "Mary Smith"
+            ];
+
+            var myFilter2 = MakeFilter(firstArray);
+            myFilter2.classList.add("filter");
+            document.getElementById("content").appendChild(myFilter2);
+
+        </script>
+    </body>
+</html>

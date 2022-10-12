@@ -1,0 +1,21 @@
+/* Use .album only */
+.album {
+    background-color: lightblue;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    margin: 6rem;
+}
+
+.album div {
+    margin: 0.5rem;
+}
+
+.album button {
+    background-color:orange;
+    margin: 0.5rem;
+}
+
+.album img {
+    width: 20%;
+    margin: 0.5rem;
+}

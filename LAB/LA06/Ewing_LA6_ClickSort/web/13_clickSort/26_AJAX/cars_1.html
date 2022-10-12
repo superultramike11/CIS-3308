@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+
+            body {
+                font-family: sans-serif;
+                background-color: #F8F8F8;
+            }
+
+            h2, h4 {
+                text-align:center;
+            }
+        </style> 
+    </head>
+    <body>
+        <h2>Make Table Better <span style="font-size:1.1rem">(from JSON File of Cars)</span></h2>
+        <h4>Must Run not View - AJAX Requires Apache Web Server (localhost)</h4>
+        <p>
+            This version uses our encapsulated (reusable) AJAX function.  
+            The HTML page calls the ajax function to get the data from a JSON file, 
+            "tweaks" the data values (e.g., making img tags from image file names), 
+            then sends that data to the MakeTable encapsulated function. 
+            In future assignments, we'll write server side code that provides 
+            us with a live feed of JSON data. 
+        </p>
+        <div id="content"></div>
+
+        <script src="js/ajax.js"></script>
+        <script src="js/MakeTableBetter.js"></script>
+        <script src="js/TableUtils.js"></script>
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            // invoke ajax function to read cars.json and if the call was successful, 
+            // run function processJSON, otherwise, put an error message in the DOM element 
+            // that has id "listHere".
+            ajax("json/cars.json", processData, document.getElementById("listHere"));
+
+            function processData(carList) {
+
+                console.log("Car list is next line");
+                console.log(carList);  // car list as an array of objects
+
+                /*    
+                 "make": "Buick",
+                 "photo": "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png",
+                 "condition": "great",
+                 "price": "15000"
+                 */
+
+                var newCarList = []; // empty array
+                // modify properties (image and price) of the array of objects so it will look 
+                // better on the page.
+                for (var i = 0; i < carList.length; i++) {
+                    newCarList[i] = {}; // i-th element of array is empty object.
+                    newCarList[i].Make = TableUtils.makeText(carList[i].make);
+                    newCarList[i].Image = TableUtils.makeImage(carList[i].photo, "10rem");
+                    newCarList[i].Condition = TableUtils.makeText(carList[i].condition);
+
+                    // true means format like currency
+                    newCarList[i].Price = TableUtils.makeNumber(carList[i].price, true);
+                }
+
+
+                // Making a DOM object, nothing shows yet... 
+                document.getElementById("content").appendChild(MakeTableBetter("Car Sale", newCarList));
+
+            }
+        </script>
+    </body>
+</html>
