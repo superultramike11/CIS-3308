@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Log On Find Activity</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="style/basic.css" rel="stylesheet" type="text/css" /> 
+        <link href="style/findActivity.css" rel="stylesheet" type="text/css" /> 
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id='titleNav'>
+            <div id='title'>
+                Logon Find
+            </div>
+            <div id='nav'>
+                <a onclick='inject(home())'>Home</a> |
+                <a onclick='inject(findActivity())'>Find</a> |
+                <a onclick='inject(newFind())'>New Find</a> |
+                <a target="_blank" href='webAPIs/listUsersAPI.jsp'>List Users API</a> |
+                <a target="_blank" href="webAPIs/getUserAlt.jsp?minMembershipFee=1&maxBirthday=1/1/2020">Web API Success</a> | 
+                <a target="_blank" href="webAPIs/getUserAlt.jsp?minMembershipFee=600000&maxBirthday=1/1/2020">Web API Failure</a> |
+                <a onclick='inject(blog())'>Blog</a>
+            </div>
+        </div>
+        
+        <div id='content'>
+        </div>
+        
+        <div id='footer'>
+            Lab Activity: <span style="font-weight:bold; background-color:yellow;">
+                Michael Ewing
+            </span>
+        </div>
+
+        <script src="js/components/blog.js"></script>
+        <script src="js/components/home.js"></script>
+        <script src="js/components/newFind.js"></script>
+        <script src="js/components/findActivity.js"></script>
+        <script src="js/reusable/ajax.js"></script>
+
+        <script>
+            // simple substitute for routing:
+            function inject(childEle) {
+                document.getElementById("content").innerHTML = "";
+                document.getElementById("content").appendChild(childEle);
+            }
+
+            inject(home()); // populate home content into content area on first rendering.
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+
+
+body { 
+    margin:0;
+    padding:0;
+    background-color: #EEFFEE;
+    font-family: sans-serif;
+}
+#titleNav {
+    position: fixed; 
+    top:0px;
+    width: 100%;
+    z-index:2;
+    border-bottom: thin solid #CCCCCC;
+}
+#titleNav a {
+    text-decoration:none;
+}
+#titleNav, #footer {
+    background-color:#EEEEFF;
+    padding:1rem;
+}
+#footer {
+    position: fixed; 
+    bottom:0px;
+    width:100%;
+    z-index:2;
+    text-align: center;
+    border-top: thin solid #CCCCCC;
+}
+#title {
+    font-size: 2rem;
+    font-weight: bold;
+} 
+#nav {
+    text-align:right;
+    padding-right: 2rem;
+}
+#content {
+    padding: 1rem;
+    padding-top: 5rem;
+    padding-bottom:3rem;
+}
