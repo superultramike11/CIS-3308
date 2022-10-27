@@ -1,8 +1,8 @@
 "use strict";
-function blogContent() {
+        function blogContent() {
 
-    // ` this is a "back tick". Use it to define multi-line strings in JavaScript.
-    var content = ` 
+        // ` this is a "back tick". Use it to define multi-line strings in JavaScript.
+        var content = ` 
       <!--Explain Database fields-->
             <h2>Fields provided by the database</h2>
             <ul>
@@ -80,14 +80,36 @@ function blogContent() {
                 because not having the album table at all is worth more points then just not including the reverse sort, I decided to leave 
                 out the reverse sort so I would lose less points in the long run for this assignment.
             </p>
+    
+            <h2>Logon Homework Difficulty</h2>
+            <p>
+                In regards to this week's homework, I found this assignment to be decently challenging, it wasn't too hard and wasn't too easy.
+                Given that we worked on the server side of the code extensively in the lab activities, the first part was fairly easy. But in
+                terms of the client side, that's where the challenge came from. I've always found it frustrating understanding JavaScript syntax,
+                but I eventually got it to successfully print out all of the required content.
+            
+                Below are four DIRECT links to the required webAPIs (keep in mind, these are not the client side links, just server side).
+                <li>
+                Click <a href="webAPIs/listUsersAPI.jsp">here</a> for my List Users API (takes no URL parameters). 
+                </li>
+                <li>
+                    Click <a href="webAPIs/login.jsp?pswd=pass2&email=danaewing@yahoo.com">here</a> 
+                    for my Log On API with VALID credentials as URL parameters.
+                </li>
+                <li>
+                    Click  <a href="webAPIs/getProfile.jsp">here</a> for my Get Profile API (takes no URL parameters). 
+                </li>
+                <li>
+                    Click <a href="webAPIs/logoff.jsp">here</a> for my Logoff API (takes no URL parameters). 
+                </li>
+            </p>
 
             <!--Main Site Image-->
             <p style="text-align:center;">
                 <img src="icons/record.jpg" style="width:50%; border-radius:10px;">
             </p>
     `;
-    
-    var ele = document.createElement("div");
-    ele.innerHTML = content;
-    return ele;    
-}
+                var ele = document.createElement("div");
+                ele.innerHTML = content;
+                return ele;
+        }
