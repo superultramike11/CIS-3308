@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- This is how you link to an external style sheet. -->
+
+        <link href="style/insertArea.css" rel="stylesheet" type="text/css" /> 
+
+        <style>
+            body {
+                font-family: sans-serif;              
+            }
+
+        </style>
+
+        <link rel="shortcut icon" href="icons/favicon.ico">
+    </head>
+    <body>
+        <div id="content">
+
+
+            <!-- 
+            
+            I like to copy the data from running the insertAPI with no URL parameters. 
+            This shows exactly which field names must be used. 
+            
+            For your real insert Homework, you will not be "hard coding" HTML tags and 
+            assigning ids. This is just a simple example to begin to show you 
+            what is needed to do the insert. I find it is easiest to make the ids
+            of the HTML tags be exactly the same as the java fields (less to remember). 
+            
+            {
+            public String album_name = "";
+            public String album_cover = "";
+            public String album_price = "";
+            public String album_release_date = "";
+            public String album_genre = "";
+            public String album_author = "";
+            public String album_rating = "";
+            public String web_user_id = "";
+            public String user_email = "";
+            public String errorMsg = "";
+            }
+            
+            -->
+
+            <div class="insertArea">
+
+                <table>
+                    <tr>
+                        <td>Album Name</td>
+                        <td><input type="text"  id="album_name" /></td>
+                        <td id="album_name_error" class="error"></td> 
+                    </tr>
+                    <tr>
+                        <td>Album Cover</td>
+                        <td><input type="text"  id="album_cover" /></td>
+                        <td id="album_cover_error" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Web User Id</td>
+                        <td><input type="text" id="web_user_id" /></td>
+                        <td id="web_user_id_error" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="insertSave()">Save</button></td>
+                        <td id="recordError" class="error"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+
+        </div> <!-- End of Content -->
+
+
+        <script src="js/ajax.js"></script>
+
+        <script>
+
+                            /* Again, copy the data obtained by running the insert API with 
+                             * no URL parameters -- shows the exact field names that must be used. 
+                             
+                             {
+                                public String album_name = "";
+                                public String album_cover = "";
+                                public String album_price = "";
+                                public String album_release_date = "";
+                                public String album_genre = "";
+                                public String album_author = "";
+                                public String album_rating = "";
+                                public String web_user_id = "";
+                                public String user_email = "";
+                                public String errorMsg = "";
+                                }
+                             
+                             */
+
+
+                            function insertSave() {
+                                console.log("insertSave was called");
+
+                                // create a user object from the values that the user has typed into the page.
+                                var userInputObj = {
+                                    "album_id": "",
+                                    "album_name": document.getElementById("album_name").value,
+                                    "album_cover": document.getElementById("album_cover").value,
+                                    "web_user_id": document.getElementById("web_user_id").value,
+                                    "errorMsg": ""
+                                };
+                                console.log(userInputObj);
+
+                                // build the url for the ajax call. Remember to encodeURI the user input object or else 
+                                // you may get a security error from the server. JSON.stringify converts the javaScript
+                                // object into JSON format (the reverse operation of what gson does on the server side).
+                                var myData = encodeURI(JSON.stringify(userInputObj));
+                                var url = "webAPIs/insertOtherAPI.jsp?jsonData=" + myData;
+                                ajax(url, insertAPISuccess, document.getElementById("recordError"));
+
+                                function insertAPISuccess(jsObj) {
+                                    // Running this function does not mean insert success. It just means that the Web API
+                                    // call (to insert the record) was successful.
+                                    // 
+                                    // the server prints out a JSON string of an object that holds field level error 
+                                    // messages. The error message object (conveniently) has its fiels named exactly 
+                                    // the same as the input data was named. 
+                                    console.log("here is JSON object (holds error messages.");
+                                    console.log(jsObj);
+
+                                    document.getElementById("album_name_error").innerHTML = jsObj.album_name;
+                                    document.getElementById("album_cover_error").innerHTML = jsObj.album_cover;
+                                    document.getElementById("web_user_id_error").innerHTML = jsObj.web_user_id;
+                                   
+                                    if (jsObj.errorMsg.length === 0) { // success
+                                        jsObj.errorMsg = "Record successfully inserted !!!";
+                                    }
+                                    document.getElementById("recordError").innerHTML = jsObj.errorMsg;
+                                }
+                            }
+        </script>
+
+    </body>
+</html>

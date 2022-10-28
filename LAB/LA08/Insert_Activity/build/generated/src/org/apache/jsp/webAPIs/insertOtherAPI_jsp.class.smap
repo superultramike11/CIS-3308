@@ -1,0 +1,11 @@
+SMAP
+insertOtherAPI_jsp.java
+JSP
+*S JSP
+*F
++ 0 insertOtherAPI.jsp
+webAPIs/insertOtherAPI.jsp
+*L
+1,9:49
+11,18:59
+*E
