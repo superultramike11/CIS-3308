@@ -1,0 +1,161 @@
+/* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+        padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+        you'll see a horizontal because the footer becomes a little wider than 100%                            */
+* { 
+    box-sizing: border-box;
+}
+
+body { 
+    background-color: rgb(118, 175, 192); /* this is the turqoise color */
+    margin:0;                   /* no white border around browser window */
+    font-color: black; 
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 16px;
+}
+
+#titleNav {
+
+    position: fixed; 
+    top:0rem;
+    left:0rem;
+    width:100%;  /* changing to position fixed, you need to add 100% if you want to fill the width */
+
+    /* the next two rules will layout the title followed by the nav side by side in a row */
+    display:flex; 
+    flex-direction: column; 
+
+    padding-bottom: 10px; 
+    padding: 1rem;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(239, 144, 96);
+
+    /* give a little "3D"  effect to the edges of titleNav and footer */
+    box-shadow: 0px 0px 5px black;  
+}
+
+#title {
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+    padding:5px;
+    white-space: nowrap;  /* don't allow the title to wrap */
+}
+
+#nav {
+    color:green;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align:right;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    white-space: nowrap;  /* don't allow nav links to wrap */
+}
+
+/*link in content*/
+#nav a:link {
+    /*Visual*/
+        text-decoration:none;
+        color: white;
+}
+
+/*If link in content is being hovered over*/
+#nav a:hover {
+    /*Visual*/
+        text-decoration:underline;
+}
+
+/*If link in content has been visited*/
+#nav a:visited {
+    /*Visual*/
+        color: blue;
+        text-decoration:none;
+}
+
+#content {
+    padding: 1rem;
+    padding-bottom: 2rem; /* make sure fixed footer doesn't cover up any content */
+    font-size: 1.15rem;
+    line-height: 2rem; 
+
+    padding-top:7rem; /* make sure fixed titleNav does not cover up any content in mobile */
+}
+
+/*link in content*/
+#content a {
+    /*Visual*/
+        color: pink;
+        text-decoration:none;
+}
+
+/*If link in content is being hovered over*/
+#content a:hover {
+    /*Visual*/
+        color: orange;
+        text-decoration: underline;
+}
+
+/*If link in content has been visited*/
+#content a:visited {
+    /*Visual*/
+        color: orange;
+        text-decoration:none;
+}
+
+#footer {
+    background-color: rgb(239, 144, 96);
+    color: white; 
+    
+    /* give a little "3D"  effect to the edges of titleNav and footer */
+    box-shadow: 0px 0px 5px #888888;  
+
+    padding: 0.5rem;
+
+    font-size: 1rem;
+    text-align: center;
+
+    position: fixed;
+    bottom: 0px; 
+    left: 0px; 
+    z-index: 1; /* make sure footer is on top of content which would have default z-index value of 0 */
+
+    width: 100%;    /* fixed elements don't fill out the width automatically, so set the width */	 
+}
+
+.indent {
+    margin-left: 1.5rem;
+}
+
+pre {
+    margin-bottom:1.5rem;
+    margin-right: 2rem;
+    margin-left: 1rem;
+    line-height:1.25rem;
+    font-size: 0.95rem;
+
+    padding:0.5rem;
+    padding-left:0rem;
+    background-color: pink; 
+
+    border-radius: 0.25rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.4);
+}
+
+/* when a ul is right after a p, make the ul have a negative top margin.*/
+p + ul { 
+    margin-top:-1rem;
+}
+
+/* desktop only */
+@media only screen and (min-width: 40rem) { 
+
+    /* in desktop the titleNav is not as tall, so less top margin needed to prevent titleNav from hiding top of for content */
+    #content {
+        padding-top:4.5rem; /* less padding is needed in desktop to make sure fixed titleNav does not cover up any content */
+    }
+
+    #titleNav {
+        /* flex attributes */
+        flex-direction: row;
+        justify-content: space-between; /* flex attribute will push title left and nav right, with "space between" */
+    }
+}

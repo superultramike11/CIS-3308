@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tutorial Demo Page</title>
+        <link href="albumStyle.css" rel="stylesheet" type="text/css" />
+        <style> 
+
+            body {
+                background-color:#707790;
+            }
+            
+            h2 {
+                text-align:center;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <h2>Demo Page - Shows That Components Work Independently</h2>
+        
+        <div id="content">
+        </div>
+        
+        // include album genre, album pic link, and album name
+        <script src="MakeAlbum.js"></script>
+        <script>
+            var myPicList = [
+                "https://e.snmc.io/i/600/w/c958f9572b6cf575306356ce8c1565cb/8249847/black-midi-schlagenheim-Cover-Art.jpg",
+                "https://e.snmc.io/i/600/w/82702edb02091c03c5712bf1185e980f/9102556/black-midi-cavalcade-Cover-Art.jpg",
+                "https://e.snmc.io/i/600/w/83654a9bd9d0008b0b1b8da3ba895568/9932087/black-midi-hellfire-Cover-Art.jpg"
+            ];
+            
+            var ss1 = MakeAlbum(myPicList, "albumStyle");
+            document.getElementById("content").appendChild(ss1);
+            
+            // Example showing why you need to get the ss reference, so the HTML page can invoke 
+            // any public methods that may be available from the returned slide show object.
+            // ss1.setPicNum(2);
+        </script>
+    </body>
+</html>

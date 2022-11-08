@@ -1,0 +1,48 @@
+
+.widget {
+    background-color:lightblue;
+    padding:1rem;
+    margin:1rem;
+    width:24rem;
+    border-radius: 0.5rem;
+}
+.widget .item {
+    position: relative; /* 
+                        with no top/bottom, left/right, "position relative" does nothing
+                        but make this element non-static so it can act as a container 
+                        for an absolute child. */ 
+
+    background-color:#DDDDDD; /*lightgrey*/
+    padding:1rem;
+    margin:1rem;
+    width: 20rem;
+    text-align:center;
+}
+.widget .info {
+    background-color:black;
+    color:white;
+    text-align:left;
+
+    position:absolute;
+    left:20rem; /* indents 17 rems from left edge of its container (item */  
+    top:5rem;;  /* starts 5 rems down from top edge of its container (item) */
+    
+    z-index:1; /* make sure info area is on top (default is 0) */
+
+    width:15rem;
+    padding:1rem;
+    display:none;
+}
+
+.widget .x {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.widget img {
+    width:15rem;
+}
+.widget div {
+    border-radius: 0.5rem;
+}

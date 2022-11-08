@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .flex {
+                display: flex;
+                flex-direction: row;
+            }
+            .left {
+                width: 20%;   
+                background-color: lightgreen;
+            }
+            .right {
+                widght: 80%;
+                background-color: lightblue;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="content"></div>
+
+        <script>
+            "use strict";
+        </script>
+
+
+        <script>
+
+            function MakeNav(objList) {
+
+                function MakeLink(obj) {
+                    var link = document.createElement("div");
+                    link.innerHTML = obj.title;
+                    link.onclick = function () {
+                        right.innerHTML = "";
+                        right.appendChild(MakeEle(obj));
+                    };
+                    return link;
+                }
+
+                function MakeEle(obj) {
+
+                    var item = document.createElement("div");
+                    item.classList.add("item");
+
+                    // title
+                    var h2 = document.createElement("h2");
+                    h2.innerHTML = obj.title;
+                    item.appendChild(h2);
+
+                    // image
+                    var p = document.createElement("p");
+                    item.appendChild(p);
+                    var image = document.createElement("img");
+                    p.appendChild(image);
+                    image.src = obj.imageFile;
+
+                    return item;
+                }
+                
+                // ENTRY POINT: MakNav
+                var container = document.createElement("div");
+                container.classList.add("flex");
+
+                var left = document.createElement("div");
+                left.innerHTML = "left";
+                left.classList.add("left");
+                container.appendChild(left);
+
+
+                var right = document.createElement("div");
+                right.classList.add("right");
+                right.innerHTML = "right";
+                container.appendChild(right);
+
+                for (var i = 0; i < objList.length; i++) {
+                    left.appendChild(MakeLink(objList[i]));
+                }
+
+                return container;
+            }  // end MakeNav
+
+            // In the HTML page
+            var objList1 = [
+                {
+                    "title": "2018 Audi",
+                    "imageFile": "http://cis-linux2.temple.edu/~sallyk/pics_car/white_audi.png",
+                    "condition": "Fair",
+                    "price": "21000"
+                },
+                {
+                    "title": "2016 Disney",
+                    "imageFile": "http://cis-linux2.temple.edu/~sallyk/pics_car/pixar.png",
+                    "condition": "Superb",
+                    "price": "$50,000"
+                },
+                {
+                    "title": "2020 Buick",
+                    "imageFile": "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png",
+                    "condition": "Great",
+                    "price": "$15,000"
+                },
+                {
+                    "title": "2015 Ford",
+                    "imageFile": "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png",
+                    "condition": "Poor",
+                    "price": "$5,000"
+                },
+                {
+                    "title": "2017 Beamer",
+                    "imageFile": "http://cis-linux2.temple.edu/~sallyk/pics_car/bmw.png",
+                    "condition": "Fair",
+                    "price": "$7,500"
+                }
+            ];
+            document.getElementById("content").appendChild(MakeNav(objList1));
+        </script>
+    </body>
+</html>

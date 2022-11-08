@@ -1,0 +1,22 @@
+/*Changes entire page contents*/
+.demo {
+    width: 90%;
+    background-image: url("https://cdn.shopify.com/s/files/1/0551/4179/3984/products/mountain_2048x2048.jpg?v=1617148889");
+    font-family: sans-serif;
+    /*Text color*/
+    color: #F2FAFF;
+}
+
+.demo td, th {
+    padding: 5rem;
+}
+
+.demo .albums {
+    width: 100%;
+}
+
+#content {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}

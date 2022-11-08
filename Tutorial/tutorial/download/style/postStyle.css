@@ -1,0 +1,139 @@
+/* 
+==================================================================================================================================
+                                                        Post
+==================================================================================================================================
+*/
+
+.post {
+    background-color: #1a1a1a;
+    margin: 2rem;
+    width: 30rem;
+    /* padding: 15px; */
+    overflow: auto;
+    min-height: 565px;
+    transition: 0.25s;
+}
+
+/* If you want to see the style change on a mouse event, check the .thumbnailHover class. The rest of the classes just use the psuedo selector for convenience. */
+.post:hover {
+    /* transition: 0.25s; */
+    box-shadow: 0px 0px 10px 10px #141414;
+}
+
+.post .title {
+    padding: 20px;
+}
+
+.post .body {
+    padding: 20px;
+    word-wrap: break-word;
+    background-color: #1f1f1f;
+    margin: 0px 20px 0px 20px;
+}
+
+.post .impact {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+==================================================================================================================================
+                                                        Impact Buttons
+==================================================================================================================================
+*/
+
+.post .impact .btn {
+    border: none; /* Remove borders */
+    color: white; /* Add a text color */
+    padding: 14px 28px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+}
+
+.post .impact .warm {
+    background-color: #4CAF50;
+}
+.post .impact .warm:hover {
+    background-color: #46a049;;
+}
+
+.post .impact .hot {
+    background-color: #ff9800;
+}
+.post .impact .hot:hover {
+    background: #e68a00;
+}
+
+.post .impact .piping {
+    background-color: #f44336;
+}
+.post .impact .piping:hover {
+    background: #da190b;
+}
+
+/* 
+==================================================================================================================================
+                                                        Update Counter
+==================================================================================================================================
+*/
+
+.post .updateTime {
+    padding: 10px;
+    text-align: center;
+}
+
+
+/* 
+==================================================================================================================================
+                                                        Image Hover Overlay
+==================================================================================================================================
+*/
+
+.post .thumbnail {
+    position: relative;
+    padding: 20px;
+}
+
+.post .thumbnail .thumbnail-img {
+    height: 260px;
+    width: 100%;
+    margin: 0px 15px 15px 0px;
+    float: left;
+    clear: both;
+
+    opacity: 1;
+    display: block;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
+
+    
+}
+
+.post .thumbnail .post-info {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 75%;
+    text-align: center;
+}
+
+.post .thumbnailHover .thumbnail-img {
+    opacity: 0.1;
+}
+
+.post .thumbnailHover .post-info {
+    opacity: 1;
+}
+
+.post .thumbnail .text {
+    background-color: #007ACC;
+    word-wrap: break-word;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+}

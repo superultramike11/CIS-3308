@@ -1,0 +1,120 @@
+<html>
+    <title>Tutorial Home</title>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+    
+    <style>
+
+        .center {
+            text-align: center;
+        }
+
+        .container {
+            margin: 5rem;
+        }
+
+        .requirement {
+            margin: 2rem;
+            padding: 2rem;
+            background-color: #292929;
+        }
+
+    </style>
+
+    <body class="demo">
+
+        <div class="center">
+            <h1>Tea Time With Luke | Tutorial Home</h1>
+            <h2>Shows Three Components on Page</h2>
+            <h3>No Hard Coded HTML, No Global CSS, No Global JS related to components</h3>
+        </div>
+
+        <div class="container">
+
+            <div class="requirement">
+                <h2>MakePost Component</h2>
+
+                For this tutorial I created a Post component, to represent news articles posted on my website. This component can be
+                created by calling the MakePost function and passing it two arguments, a post object, and a style object. You can see
+                how these objects should look below: <br><br>
+
+                postObj:
+                <ul>
+                    <li>articleTitle: The title of the article you'd like to create.</li>
+                    <li>articleBody: The articles actual content.</li>
+                    <li>articleThumbnail: A link to an image associated with your article.</li>
+                    <li>articleImpact: A number ideally between 1-10 that describes how important you as the author, think the story is.</li>
+                    <li>articlePostDate: A date ("April 3, 2021, 19:00:00") that represents when an article was first posted. This value would be provided and maintained by the database.</li>
+                    <li>articleUpdateDate: A date ("April 3, 2021, 19:00:00") that represents when a future update to the story will be released.</li>
+                    <li>articleAuthor: The author of the article.</li>
+                    <li>articleAuthorDescription: A little bit of information about the author.</li>
+                    <li>articleUpdateBody: The new article body that should appear when a scheduled update time is reached.</li>
+                </ul>
+
+                styleObj:
+                <ul>
+                    <li>style: The name of the style class you would like to apply. (Note: This style only effects the article thumbnail.)</li>
+                </ul>
+
+                Public Functions:
+                <ul>
+                    <li>setImpactSeverity(severity): Accepts a number, ideally between 1-10, and upates the impact severity and style of the post.</li>
+                    <li>updatePost(date, body): Accepts a date in the future (In the format of: "April 3, 2021, 19:00:00") as well as a body of text, and updates the post body when the passed date is reached.</li>
+                </ul>
+
+            </div>
+
+            <div class="requirement">
+                <h2>Links to Demo</h2>
+                <a href="./download/demo.html" target="_blank">Demo with only 3 Posts</a>. This links to a page with 3 posts on it, and both public functions being used once inside of the script tag.<br>
+                <a href="./download/demo-with-tests.html" target="_blank">Demo with 3 Posts and testing table.</a>This links to a page with 3 posts on it and a testing table that allows your to test all public functions on any post you'd like.
+            </div>
+
+            <div class="requirement">
+                <h2>Download</h2>
+                You can find a link to my tutorial download <a href="./download.zip" target="_blank">here</a>.
+            </div>
+
+            <div class="requirement">
+                <h2>Code Snippets</h2>
+                <ul>
+                    <li><a href="https://www.w3schools.com/code/tryit.asp?filename=GP9DWFRSVA2S" target="_blank">Alert Buttons</a></li>
+                        &nbsp&nbsp This Alert Buttons snippet is what I used to display the impact of a story on my widget. These colorful buttons are a great way to grab someones attention. I was able to achieve this
+                        through a super simple process. While I'm updating the impact level, I check if the current level falls withing the range of a different rating. If it does, I update the innerHTML of the button
+                        as well as the style, which indicates the stories rating.
+                    <li><a href="https://www.w3schools.com/code/tryit.asp?filename=GP9ENRNPI6MY" target="_blank">Countdown</a></li>
+                        &nbsp&nbsp This Countdown snippet was the most interesting for me to work on. This snippet displays a dynamic countdown to a future date that the user enters.
+                        It's pretty simple within this code snipit, but gets a little more difficult in my actual tutorial where the date can be updated in different ways. All we do to achieve this 
+                        is create a function that runs the setInterval callback every 1 second, and then within setInterval callback, we calculate the difference between the current time and the time the user entered. Once we
+                        have that difference, we just pass it into a string building function that makes our output look nice. The innerHTML gets updated with every setInterval call, which is what gives this snippet
+                        its real-time effect.
+                    <li><a href="https://www.w3schools.com/code/tryit.asp?filename=GP9EMMTF31Z5" target="_blank">Read More</a></li>
+                        &nbsp&nbsp I added this snippet of code to my project last minute, in order to keep my components looking nice. This snippet breaks down a large chunk of text into
+                        visible and hidden sections, then places a clickable button that allows you to toggle the hidden sections visibility. We can achieve this by slicing the text into our desired sizes,
+                        then placing each half into a span, and creating another span for the clickable Read More / Read Less text. The span with the desired hidden half gets the style display:none, by default. When the Read More or Read Less
+                        span is clicked, we toggle the hidden span's style to display:inline.
+                </ul>
+            </div>
+
+            <div class="requirement">
+                <h2>Reference Links</h2>
+                <ul>
+                    <li><a href="https://www.w3schools.com/howto/howto_css_image_overlay.asp" target="_blank">Image Hover Overlay</a>, 
+                        <a href="https://www.w3schools.com/howto/howto_css_alert_buttons.asp" target="_blank">Alert Button</a>,
+                        <a href="https://www.w3schools.com/howto/howto_js_countdown.asp" target="_blank">Countdown Timer</a>.
+                    </li>
+                        &nbsp&nbsp These first three links were extremely beneficial, as they're the examples of my 3 base components.These links contain the basis for every design element
+                    my component.
+                    <li><a href="https://www.youtube.com/" target="_blank">Design reference</a></li>
+                        &nbsp&nbsp This is a link to the YouTube home page, which I used as a design reference for my component.
+                </ul>
+                
+                <br>
+                <a href="" target="_blank"></a>
+                <a href="" target="_blank"></a>
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

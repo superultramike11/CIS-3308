@@ -1,0 +1,113 @@
+.album {
+    background-color: #44595F;
+    margin: 2rem;
+    width: 30rem;
+    transition: 0.25s;
+}
+
+/* adds white glow to object background */
+.album:hover {
+    box-shadow: 0px 0px 10px 10px #FFFFFF;
+}
+
+.album .title {
+    padding: 20px;
+}
+
+.album .body {
+    padding: 20px;
+    word-wrap: break-word;
+    background-color: #1f1f1f;
+    margin: 0px 20px 0px 20px;
+}
+
+.album .rating {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+==================================================================================================================================
+                                                        Impact Buttons
+==================================================================================================================================
+*/
+
+.album .rating .btn {
+    border: none; /* Remove borders */
+    color: white; /* Add a text color */
+    padding: 14px 28px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+}
+
+.album .rating .good {
+    background-color: #4CAF50;
+}
+.album .rating .good:hover {
+    background-color: #46a049;;
+}
+
+.album .rating .ok {
+    background-color: #ff9800;
+}
+.album .rating .ok:hover {
+    background: #e68a00;
+}
+
+.album .rating .bad {
+    background-color: #f44336;
+}
+.album .rating .bad:hover {
+    background: #da190b;
+}
+
+/* 
+==================================================================================================================================
+                                                        Image Hover Overlay
+==================================================================================================================================
+*/
+
+.album .thumbnail {
+    position: relative;
+}
+
+.album .thumbnail .album-img {
+    width: 100%;
+    margin: 0px 15px 15px 0px;
+    float: left;
+    clear: both;
+
+    opacity: 1;
+    display: block;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
+}
+
+.album .thumbnail .album-info {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 75%;
+    text-align: center;
+}
+
+.album .thumbnailHover .album-img {
+    opacity: 0.1;
+}
+
+.album .thumbnailHover .album-info {
+    opacity: 1;
+}
+
+.album .thumbnail .text {
+    background-color: #007ACC;
+    word-wrap: break-word;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+}

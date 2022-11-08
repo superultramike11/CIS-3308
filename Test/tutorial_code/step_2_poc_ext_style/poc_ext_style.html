@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/widget.css" rel="stylesheet" type="text/css" />  
+        <style>
+            body {
+                background-color:beige;
+            }
+            h1, h2, h3 {
+                color:navy;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Proof Of Concept</h1>
+        <h2>CSS Moved to External CSS File</h2>
+            
+        <h3>Still Hard Coded HTML and Global JS</h3>
+        <div class="widget">
+
+            <div class="item">
+                <h2>2018 Audi</h2>
+                <p>
+                    <img src="http://cis-linux2.temple.edu/~sallyk/pics_car/white_audi.png"/>
+                </p>
+                <button onclick="showInfo(this)">Click Here For More Info</button>
+                <div class="info">
+                    <span onclick = "hide(this)" class="x">
+                        &#10006;
+                    </span>
+                    <p>
+                        <strong>Condition:</strong>
+                        Fair
+                    </p>
+                    <p>
+                        <strong>Price:</strong>
+                        $21,000
+                    </p>
+                </div>
+            </div>
+
+            <div class="item">
+                <h2>2016 Disney</h2>
+                <p>
+                    <img src="http://cis-linux2.temple.edu/~sallyk/pics_car/pixar.png"/>
+                </p>
+                <button onclick="showInfo(this)">Click Here For More Info</button>
+                <div class="info">
+                    <span onclick = "hide(this)" class="x">
+                        &#10006;
+                    </span>
+                    <p>
+                        <strong>Condition:</strong>
+                        Superb
+                    </p>
+                    <p>
+                        <strong>Price:</strong>
+                        $50,000
+                    </p>
+                </div>
+            </div>
+
+            <div class="item">
+                <h2>2020 Buick</h2>
+                <p>
+                    <img src="http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png"/>
+                </p>
+                <button onclick="showInfo(this)">Click Here For More Info</button>
+                <div class="info">
+                    <span onclick = "hide(this)" class="x">
+                        &#10006;
+                    </span>
+                    <p>
+                        <strong>Condition:</strong>
+                        Great
+                    </p>
+                    <p>
+                        <strong>Price:</strong>
+                        $15,000
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script>
+            function showInfo(clickedEle) {
+                var parent = clickedEle.parentElement;
+                var infoEle = parent.getElementsByClassName("info")[0];
+                infoEle.style.display = "block";
+            }
+            function hide(xEle) {
+                var parent = xEle.parentElement;
+                parent.style.display = "none";
+            }
+        </script>
+    </body>
+</html>

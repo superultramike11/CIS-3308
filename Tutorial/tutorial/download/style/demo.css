@@ -1,0 +1,65 @@
+.demo {
+    margin: 0px;
+    padding: 0px;
+    background-color: #1E1E1E;
+    font-family: sans-serif;
+    color: #F2FAFF;
+}
+
+
+.demo .center {
+    text-align: center;
+}
+
+.demo .impact-demo {
+    margin-left: 20%;
+}
+
+.demo .impact-demo button {
+    margin: 2rem;
+}
+
+.demo td, th {
+    padding: 1rem;
+}
+
+.demo .tests {
+    margin-left: 25%;
+}
+
+
+
+/* Allowing all images to take up to 100% by default. Image with will be constrained by its container, for example a column. */
+
+
+
+#content {
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+@media screen and (min-width: 200px) and (max-width: 1600px) { 
+
+    #content {
+        /* margin-left: 10rem; */
+        display: flex;
+        flex-direction: column;
+        
+        width: 50%;
+        height: auto;
+        margin: 0 auto;
+        padding: 10px;
+        position: relative;
+    }
+
+    .demo .tests {
+        margin-left: 15%;
+    }
+
+
+}
+

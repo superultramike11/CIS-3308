@@ -1,0 +1,82 @@
+<html>
+    <title>Demo Page</title>
+    <link href="./style/postStyle.css" rel="stylesheet" type="text/css" />
+    <link href="./style/demo.css" rel="stylesheet" type="text/css" />
+
+
+    <body class="demo">
+
+        <div class="center">
+            <h1>Tea Time With Luke | Example of Demo</h1>
+            <h2>Shows Three Components on Page</h2>
+            <h3>No Hard Coded HTML, No Global CSS, No Global JS related to components</h3>
+        </div>
+
+        <div id="content" class='content-container'>
+        </div>
+
+    </body>
+
+
+    <script src="./js/MakePost.js"></script>
+    <script>
+
+        //========================================================================================================================================
+        //                                                             TEST DATA
+        //========================================================================================================================================
+        var postOneData = {
+            articleTitle: "Lorem ipsum", // Title of the article.
+            articleBody: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dignissim consequat ex sed maximus. Cras leo lorem, aliquam at dignissim vitae, dictum sit amet eros. Pellentesque est est, luctus at velit nec, imperdiet hendrerit odio. Aliquam sit amet ullamcorper neque. Phasellus enim nulla, efficitur id velit eu, consequat varius mauris. Curabitur bibendum placerat ornare. Aliquam congue sapien augue. Vivamus eget tincidunt arcu, sit amet consequat elit. Maecenas venenatis nec nulla quis finibus. Aliquam posuere purus a efficitur lacinia. Aliquam ligula turpis, ullamcorper id viverra et, egestas hendrerit diam. Phasellus eget orci quis mauris semper vulputate non vitae metus. Maecenas nec magna tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur eleifend arcu lacinia pulvinar commodo.", // Body of the article.
+            articleThumbnail: "https://cdn.pixabay.com/photo/2014/08/13/21/57/mushroom-417647_960_720.jpg", // Thumbnail associates with the story.
+            articleImpact: 1, // How important the story is.
+            articlePostDate: "April 3, 2021, 19:00:00",
+            articleUpdateDate: "",
+            articleAuthor: "Laurem Ipsum Generator",
+            articleAuthorDescription: "I'm a text generator.",
+            articleUpdateBody: ""
+        };
+
+        var postTwoData = {
+            articleTitle: "I cant believe this happened!?", // Title of the article.
+            articleBody: "There no substance to anything we say, but check back later for some tea.", // Body of the article.
+            articleThumbnail: "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5f6c061ca71799093f55fd02%2F0x0.jpg", // Thumbnail associates with the story.
+            articleImpact: 8, // How important the story is.
+            articlePostDate: "April 3, 2021, 19:00:00",
+            articleUpdateDate: "April 4, 2021, 19:00:00", // Article update release time (for hot, developing stories.)
+            articleAuthor: "Luke Dependahl",
+            articleAuthorDescription: "Creator of this website",
+            articleUpdateBody: "This is the new body of the article....."
+        };
+
+        var postThreeData = {
+            articleTitle: "This is just another test...", // Title of the article.
+            articleBody: "Here is another test with a link body. Vestibulum eget egestas felis, sed auctor mi. Praesent justo risus, euismod quis enim a, pharetra posuere eros. Nunc nec ipsum ipsum. Vivamus ipsum neque, convallis at luctus ut, commodo eu mi. Pellentesque luctus justo id eros auctor varius. Nam dapibus augue at lectus convallis congue. Nam finibus enim sit amet nibh gravida dictum. Morbi a commodo dui, sit amet elementum risus. Nulla volutpat magna eget cursus sodales. Vivamus sit amet accumsan mi. Curabitur eu molestie urna. Phasellus aliquam congue pulvinar.", // Body of the article.
+            articleThumbnail: "https://randomwordgenerator.com/img/picture-generator/52e0d4424f52aa14f1dc8460962e33791c3ad6e04e5074417d2c7ed1944dc3_640.jpg", // Thumbnail associates with the story.
+            articleImpact: 5, // How important the story is.
+            articlePostDate: "April 3, 2021, 19:00:00",
+            articleUpdateDate: "April 12, 2021, 19:00:00", // Article update release time (for hot, developing stories.)
+            articleAuthor: "Luke Dependahl",
+            articleAuthorDescription: "Another test for author description",
+            articleUpdateBody: "This should test switching between long and short bodied articles."
+        };
+
+        //========================================================================================================================================
+        //                                                             MAKING POSTS
+        //========================================================================================================================================
+        
+        var firstPost = MakePost(postOneData, {style: "thumbnailHover"});
+        var secondPost = MakePost(postTwoData, {style: "thumbnailHover"});
+        var thirdPost = MakePost(postThreeData, {style: "thumbnailHover"});
+
+        // Here is a manual test of the public functions if you would like to see an example outside of the testing table I created.
+        firstPost.setImpactSeverity(2);
+        secondPost.updatePost("April 4, 2021, 14:33:00", "Newly updated post.");
+
+        document.getElementById("content").appendChild(firstPost);
+        document.getElementById("content").appendChild(secondPost);
+        document.getElementById("content").appendChild(thirdPost);
+
+
+    </script>
+
+</html>

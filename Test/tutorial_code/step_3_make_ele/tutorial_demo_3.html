@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/widget.css" rel="stylesheet" type="text/css" />  
+        <style>
+            body {
+                background-color:beige;
+            }
+            h1, h2, h3 {
+                color:navy;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Example of Tutorial Demo Page</h1>
+        <h2>Make One Element per Object (Two Elements on Page)</h2>
+        <h3>No Hard Coded HTML, No Global CSS, No Global JS</h3>
+        <div id="content" ></div>
+        <script src="js/MakeEle.js"></script>
+        <script>
+            
+            var obj1 = {
+                "title": "2018 Audi",
+                "imageFile": "http://cis-linux2.temple.edu/~sallyk/pics_car/white_audi.png",
+                "condition": "Fair",
+                "price": "$21,000"
+            };
+            var obj2 = {
+                "title": "2016 Disney",
+                "imageFile": "http://cis-linux2.temple.edu/~sallyk/pics_car/pixar.png",
+                "condition": "Supeb",
+                "price": "$50,000"
+            };
+
+            var dom1 = MakeEle(obj1);
+            console.log(dom1);
+            document.getElementById("content").appendChild(dom1);
+
+            var dom2 = MakeEle(obj2);
+            document.getElementById("content").appendChild(dom2);
+            
+        </script>
+    </body>
+</html>
