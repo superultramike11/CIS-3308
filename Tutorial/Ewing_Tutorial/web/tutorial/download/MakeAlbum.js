@@ -1,86 +1,88 @@
 "use strict";
-function MakeAlbum(picList, style) {
-    console.log(style);
-    var slideShow = document.createElement("div");
-    slideShow.classList.add(style);
+function MakeAlbum(albumObj, styleObj) {
+    var container = document.createElement("div");
+    container.classList.add("container");
+
+    var albumRating = albumObj.albumRating;
+
+    var ratingButton = document.createElement("button");
+
+    function MakeEle(obj) {
+        var album = document.createElement("div");
+        album.classList.add("album");
+
+        var albumThumbnail = document.createElement("div");
+        albumThumbnail.classList.add("thumbnail");
+        
+        var albumImage = document.createElement("img");
+        albumImage.classList.add("album-img");
+        albumImage.src = obj.albumCover;
+
+        var albumInfo = document.createElement("div");
+        albumInfo.classList.add("album-info");
+        
+        var albumText = document.createElement("div");
+        albumText.classList.add("text");
+
+        var albumAuthor = document.createElement("p");
+        albumAuthor.innerHTML = obj.albumAuthor;
+
+        var albumName = document.createElement("p");
+        albumName.innerHTML = obj.albumName;
+
+        albumText.appendChild(albumName);
+        albumText.appendChild(albumAuthor);
+        albumInfo.appendChild(albumText);
+        
+        albumThumbnail.appendChild(albumImage);
+        albumThumbnail.appendChild(albumInfo);
+
+        //Adds hover effect to the thumbnail
+        albumThumbnail.onmouseover = function() {
+            albumThumbnail.classList.add(styleObj.style);
+        };
+
+        albumThumbnail.onmouseout = function() {
+            albumThumbnail.classList.remove(styleObj.style);
+        };
+
+        album.appendChild(albumThumbnail);
+
+        // ALL RATING SCRIPTS BELOW
+        var rating = document.createElement("div");
+        ratingButton = getAlbumRating(albumRating);
+
+        rating.classList.add("rating");
+        rating.appendChild(ratingButton);
+        album.appendChild(rating);
+
+        // returns a button with the correct styling matching user input
+        function getAlbumRating(ratingNum) {
+            ratingButton.removeAttribute("class");
+            
+            ratingButton.innerHTML = ratingNum;
+            ratingButton.classList.add("button");
     
-    // add a div that will hold the image
-    var div = document.createElement("div");
-    slideShow.appendChild(div);
-    
-    // add image into the div & set the image's src attribute to show pictures
-    var myImage1 = document.createElement("img");
-    div.append(myImage1);
-    
-    // add image into the div & set the image's src attribute to show pictures
-    var myImage2 = document.createElement("img");
-    div.append(myImage2);
-    
-    // add back button under the image (and empty paragraph)
-    // this button could used for filter
-    var backButton = document.createElement("button");
-    backButton.innerHTML = " &lt; ";
-    slideShow.appendChild(backButton);
-    
-    // add forward button under the image (and empty paragraph)
-    // this button could used for filter
-    var fwdButton = document.createElement("button");
-    fwdButton.innerHTML = " &gt; ";
-    slideShow.appendChild(fwdButton);
-    
-    // private variable that keeps track of which image is showing
-    var picNum = 0;
-    setPic1();
-    setPic2();
-    
-    function setPic1() {
-        myImage1.src = picList[picNum];
-    }
-    
-    function setPic2() {
-        myImage2.src = picList[picNum];
-    }
-    
-    // Advance to next image in the picture list
-    // this could be used as the execution button filter
-    function nextPic() {
-        if(picNum < picList.length-1) {
-            picNum++;
+            if(ratingNum >= 80) {
+                ratingButton.classList.add("good");
+            }
+            else if(ratingNum >= 60) {
+                ratingButton.classList.add("ok");
+            }
+            else {
+                ratingButton.classList.add("bad");
+            }
+            return ratingButton;
         }
-        setPic1();
-        setPic2();
+    
+        // public function to explictly change the rating of an album
+        container.getAlbumRating = function(ratingNum) {
+            ratingButton = getAlbumRating(ratingNum);
+        };
+        return album;
     }
     
-    // Go to the previous image in the picture list
-    // this could be used as the execution button filter
-    function prevPic() {
-        if(picNum > 0) {
-            picNum--;
-        }
-        setPic1();
-        setPic2();
-    }
-    
-    function display() {
-        console.log("you clicked on an album");
-    }
-    
-    myImage1.onclick = display;
-    myImage2.onclick = display;
-    
-    // add next and previous functionality to next and previous buttons
-    backButton.onclick = prevPic;
-    fwdButton.onclick = nextPic;
-    
-    // public function switchup
-    slideShow.setPicNum = function (newNum) {
-        if ((newNum >= 0) && (newNum < picList.length)) {
-            picNum = newNum;
-            // change the src attribute of the image element to the desired new image
-            setPic1();
-            setPic2();
-        }
-    };
-    
-    return slideShow;
+    var albumDiv = MakeEle(albumObj);
+    container.appendChild(albumDiv);
+    return container;
 }

@@ -55,19 +55,18 @@ function MakeAlbum(albumObj, styleObj) {
 
         // ALL RATING SCRIPTS BELOW
         var rating = document.createElement("div");
-        ratingButton = getImpactSeverity(albumRating);
+        ratingButton = getAlbumRating(albumRating);
 
         rating.classList.add("rating");
         rating.appendChild(ratingButton);
         album.appendChild(rating);
 
         // returns a button with the correct styling matching user input
-        function getImpactSeverity(ratingNum) {
-            //Resetting classes.
+        function getAlbumRating(ratingNum) {
             ratingButton.removeAttribute("class");
             
             ratingButton.innerHTML = ratingNum;
-            ratingButton.classList.add("btn");
+            ratingButton.classList.add("button");
     
             if(ratingNum >= 80) {
                 ratingButton.classList.add("good");
@@ -78,18 +77,17 @@ function MakeAlbum(albumObj, styleObj) {
             else {
                 ratingButton.classList.add("bad");
             }
-    
             return ratingButton;
         }
     
-        // public function to explictly change the rating of a specific album
-        container.setImpactSeverity = function(impactLevel) {
-            ratingButton = getImpactSeverity(impactLevel);
+        // public function to explictly change the rating of an album
+        container.getAlbumRating = function(ratingNum) {
+            ratingButton = getAlbumRating(ratingNum);
         };
         return album;
     }
     
-    var postDiv = MakeEle(albumObj);
-    container.appendChild(postDiv);
+    var albumDiv = MakeEle(albumObj);
+    container.appendChild(albumDiv);
     return container;
 }

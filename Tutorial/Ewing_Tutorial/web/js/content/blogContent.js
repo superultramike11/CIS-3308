@@ -103,6 +103,16 @@
                     Click <a href="webAPIs/logoff.jsp">here</a> for my Logoff API (takes no URL parameters). 
                 </li>
             </p>
+            
+            <h2>Tutorial Project</h2>
+            <p>
+                In regards to this tutorial project, I found this assignment to be fairly challenging but informative to what I've been working for the past few weeks.
+                While the easiest part was planning out the beginning conceptual stages of this tutorial,
+                 I found it to be an extreme challenge to actually implement anything I had planned. Thankfully I had lots of sample code given by the professor and ample examples
+                 to view when developing out the JavaScript functionality (since building out the CSS and HTML components were very easy). Overall what I found to be the most valuable
+                 was the final product of seeing how different elements across not just objects but languages tie together to create a product. For example how the html code ties into
+                 the actual javascript function and how those javascript functions can potentially alter the CSS state of a given HTML element.
+            </p>
 
             <!--Main Site Image-->
             <p style="text-align:center;">
