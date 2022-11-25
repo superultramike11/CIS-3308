@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ES6 Arrow Functions</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                font-size:1.2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>
+            Press F12 (open JS console) to see output.
+        </h3>
+        <p>
+            ES6 Arrow Functions https://www.w3schools.com/js/js_arrow_function.asp  
+        </p>
+        <p>
+            In addition to just "being shorter" notation, there is an important difference 
+            between arrow functions and "regular functions".
+        </p>
+        <ul>
+            <li>
+                In regular functions, the keyword "this" represents the object that called the function, 
+                e.g., a button that was clicked.
+            </li>
+            <li>
+                With arrow functions, the keyword "this" always represents the object that defined the 
+                arrow function.
+            </li>
+        </ul>
+        <script>
+            // ES6 Arrow Functions Syntax:
+            //   (param1, param2, ..., paramN) => expression
+
+            // In all of the examples below you could replace "const" 
+            // with "var". const is new ES6 way of declaring something 
+            // that's value will not (cannot) change. So you are saying 
+            // that you do not plan to redefine these functions...
+
+            function multiply_ES5 (x, y) {
+                return x * y;
+            }
+
+            // Defining a function in "regular JavaScript" (called ES5).
+            var multiply_ES5 = function (x, y) {
+                return x * y;
+            };
+
+            var obj = {};
+            obj.multiply_ES5 = function (x, y) {
+                return x * y;
+            };
+
+            // ES6 (new JS syntax): don't need the keyword "function"
+            const multiply_ES6 = (x, y) => {
+                return x * y;
+            };
+
+            // ES6: don't need curly brackets if you only have one expression.
+            const multiply_ES6_v2 = (x, y) => x * y;
+
+            // ES6 syntax - OK to have more than one line in the function 
+            const multiply_ES6_v3 = (x, y) => {
+                console.log("Yes, it is ok to have more than one line in the function.");
+                return x * y;
+            };
+
+            const increment_ES6_v3 = x => x + 1;
+
+            // output
+            console.log("multiply_ES5(2,3) is " + multiply_ES5(2, 3));
+            console.log("multiply_ES6(3,4) is " + multiply_ES6(3, 4));
+            console.log("multiply_ES6_v2(4,5) is " + multiply_ES6_v2(4, 5));
+            console.log("multiply_ES6_v3(5,6) is " + multiply_ES6_v3(5, 6));
+
+            // https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/
+        </script>
+    </body>
+</html>

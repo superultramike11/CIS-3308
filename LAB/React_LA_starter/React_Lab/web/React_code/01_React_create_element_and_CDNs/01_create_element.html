@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>First React Example: ES5</title>        
+
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+            
+    </head>
+    <body>
+        <h3>ReactDom.render, React.createElement</h3>
+        <p>
+            
+        </p>
+        <!-- Example creating content into two DOM elements --> 
+        <div id="greeting-div"></div>
+        <div id="exit-div"></div>
+
+        <script>
+            
+            // ReacctDOM.render function takes 2 input parameters, both DOM elements: 
+            // The first DOM element is placed inside of the second. 
+            ReactDOM.render(
+                React.createElement("div", null, "Hello World"),
+                document.getElementById("greeting-div")
+            );
+
+            ReactDOM.render(
+                    
+                // React.createElement takes 3 input parameters:
+                // 1st: What kind of element to create
+                // 2nd: HTML attributes for the element
+                // 3rd: what you want placed into the innerHTML.
+                React.createElement("div", {"style": {"color": "red", "background-color": "yellow"}}, "Goodbye World"),
+                document.getElementById("exit-div")
+            );
+
+        </script>
+    </body>
+</html>

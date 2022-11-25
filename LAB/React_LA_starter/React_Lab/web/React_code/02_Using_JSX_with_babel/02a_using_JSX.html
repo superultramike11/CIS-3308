@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>First React Example: ES5</title>
+
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>        
+
+    </head>
+    <body>
+        <h3>ReactDom.render with JSX (JavaScript XML)</h3>
+        <p>
+            JSX is a JavaScript extension (babel) that lets you use HTML like tags in JavaScript 
+            (without needing any quotes). 
+        </p>
+        <div id="greeting-div"></div>
+
+        <script type="text/babel">  // Must use this script type if you want to use JSX with babel
+
+            // ReactDOM.render places the first parameter (DOM element) inside of the second DOM element. 
+            ReactDOM.render(
+                <h1>Hello America</h1>, // Example of using JSX (Html tag) in JavaScript
+                document.getElementById("greeting-div")
+            );
+        </script>
+    </body>
+</html>

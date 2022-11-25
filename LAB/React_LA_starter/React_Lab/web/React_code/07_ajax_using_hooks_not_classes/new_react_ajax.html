@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React Project</title>
+        
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+
+    </head>
+    <body>
+        <h3>AJAX - Update State Using useState (new)</h3>
+        <p>
+            This is an alternative to the older approach which uses "class extends React.component".
+        </p>
+        <div id="root"></div>
+        
+        <script src="ajax_alt.js"></script>
+        <script type="text/babel">
+            
+            //   "id": 1, "name": "Apples", "price": "$2"
+            const FoodList = ( {list} ) => (
+                <ul>
+                    {
+                        list.map(elem => 
+                            <li key={elem.id}>{elem.name} costs {elem.price}</li>    
+                        )
+                    }
+                </ul>
+            );
+                       
+            const FoodListComponent = () => {
+                
+                // Tell React that items array is something that
+                // (when changed) should redisplay the FoodListComponent.
+                // Set items initial value to [] - empty array.
+                const [items, setItems] = React.useState([]);
+                
+                // Tell React that if "error" changes, redisplay this 
+                // FoodListComponent. Set initial value of error to null.
+                const [error, setError] = React.useState(null);
+                
+                // useEffect second parameter is an array of elements (called 
+                // "watch list") that (if they change) should trigger the function 
+                // specified as the first useEffect parameter.
+                // To get React to run something once, we invoke useEffect
+                // with an empty array for the "watch list".
+                React.useEffect(
+                        () => {
+                            ajax_alt(
+                                "json/sk_foodItems.json",
+                                function (obj) {
+                                    setItems(obj.items);
+                                }, 
+                                function (msg) {
+                                    setError(msg);
+                                }
+                            );
+                        }, 
+                        []
+                );
+ 
+                return (
+                    <div>
+                        { error ?  <div>Error: {error} </div> : <FoodList list={items} /> }
+                    </div>
+                );
+            }; // class FoodListComponent
+            
+            ReactDOM.render(
+                <FoodListComponent />,
+                document.getElementById("root")
+            );
+    
+        </script>
+    </body>
+</html>

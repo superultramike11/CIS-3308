@@ -1,0 +1,72 @@
+
+/* This CSS file is called an external style sheet. Link to it from 
+your HTML pages. */
+
+
+/*  Use ONLY this type of comment inside a style sheet. Other types 
+  (like double slash) do not work. */
+
+html, body {
+    margin:0; /* don't want tiny white border inside browser window */
+    padding:0; /* don't want tiny white border inside browser window */
+}
+body {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background-color: rgb(160, 200, 180); /* this is the turqoise color */
+}
+
+#titleNav {
+    font-family: serif;
+    color:white;
+    background-color:black;
+    padding: 1rem;
+}
+
+#pageTitle { /* position web site title inside the titleNav */
+
+    font-size:2.5rem;
+    font-weight:bold;
+    letter-spacing: 0.2rem;
+    font-style:italic;
+}
+#nav {
+    font-family: sans-serif;
+    margin-right: 1rem;
+    text-align:right; 
+}
+
+/* "#nav a" styles links inside of element with id="nav" */
+#nav a {
+    text-decoration:none;  /* Do not links in "nav" to be underlined */
+    color:white;
+    padding-left:0.5rem;
+    padding-right:0.5rem;
+}
+
+#nav a:visited {
+    color:#DDDDFF;
+}
+
+#nav a:hover {
+    color:yellow;
+}
+
+#content {
+    padding-left:1rem;	
+    padding-bottom: 5rem; /* Footer is fixed. Add bottom margin to content 
+                             so that the foooter does not cover up the bottom 
+                             of your content. */
+
+}
+
+/* I made the footer be always fixed to the bottom of the browser window. */
+#footer {
+    position: fixed;
+    bottom:0px;
+    left:0xp;
+    width:100%;
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:1rem;	 	 
+}

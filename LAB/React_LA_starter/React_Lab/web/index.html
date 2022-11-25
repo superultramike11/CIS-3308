@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+<head>
+    <title>Title Nav Using Flexbox</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="style/main.css" rel="stylesheet" type="text/css" />
+    <link href="style/dropdown.css" rel="stylesheet" type="text/css" />
+    <link href="style/comingSoon.css" rel="stylesheet" type="text/css" />
+    <link href="style/sportsTable.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- You need these two CDNs to use react, their version numbers must match -->
+    <!-- changed version on 10-20-2022 from 16.3.1 to 18 for react and react-dom -->
+    <script src='https://unpkg.com/react@18/umd/react.production.min.js'></script>
+    <script src='https://unpkg.com/react-dom@18/umd/react-dom.production.min.js'></script>
+
+    <!-- This next CDN lets you use JSX (looks like HTML tags in JS) -->
+    <script src='https://unpkg.com/babel-standalone@6.26.0/babel.js'></script>
+
+    <!-- This lets you use React Routing -->
+    <script src='https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js'></script>
+
+    <style>
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="js/reusable/dropDownFW.js"></script>
+
+    <script type="text/babel" src="js/React/Blog.js"></script>
+    <script type="text/babel" src="js/React/ComingSoon.js"></script>
+    <script type="text/babel" src="js/React/Fun.js"></script>
+    <script type="text/babel" src="js/React/FunProp.js"></script>
+    <script type="text/babel" src="js/React/Home.js"></script>
+    <script type="text/babel" src="js/React/ItemsBuild.js"></script>
+    <script type="text/babel" src="js/React/SportsTableBuild.js"></script>
+    <script type="text/babel" src="js/React/Users.js"></script>
+    <script type="text/babel" src="js/React/UsersProp.js"></script>
+
+    <script type="text/babel">
+
+        "use strict";
+
+        dropDownFW({
+            dropHeaderStyle: "dropHeader",
+            dropContentStyle: "dropContent",
+            showStyle: "show",
+            hideStyle: "hide"
+        });
+
+        const Link = ReactRouterDOM.Link;
+        const Route = ReactRouterDOM.Route;
+
+        const App = () => (
+            <ReactRouterDOM.HashRouter>
+
+                <div id="titleNav">
+                    <div id="title">
+                        Website Title
+                    </div>
+                    <div id="nav">
+                        <div class="dropdown">
+                            <Link to="/home">Home</Link>
+                        </div>
+
+                        <div class="dropdown">
+                            <div class="dropHeader">Search</div>
+                            <div class="dropContent">
+                                <Link to="/users">Users</Link> <br />
+                                <Link to="/fun">Fun</Link> <br />
+                                <Link to="/usersProp">Users Prop</Link> <br />
+                                <Link to="/funProp">Fun Prop</Link> <br />
+                                <Link to="/itemsBuild">Items Build</Link> <br />
+                                <Link to="/sportsTable">Sports Table</Link>
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <Link to="/blog">Blog</Link>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content">
+                    <Route path="/" exact component={Home} />
+                    <Route path="/home" component={Home} />
+                    <Route path="/blog" component={Blog} />
+                    <Route path="/users" component={Users} />
+                    <Route path="/fun" component={Fun} />
+                    <Route path="/usersProp" component={UsersProp} />
+                    <Route path="/funProp" component={FunProp} />
+                    <Route path="/itemsBuild" component={ItemsBuild} />
+                    <Route path="/sportsTable" component={SportsTableBuild} />        
+                </div>
+
+                <div id="footer">
+                    Your Footer Goes Here
+                </div>
+
+            </ReactRouterDOM.HashRouter>
+        );
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+
+    </script>
+
+</body>
+</html>

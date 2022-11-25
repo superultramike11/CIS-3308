@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Map (Functional Programming): Open F12 to See Output</h2>
+        <script>
+
+            // https://www.youtube.com/watch?v=rRgD1yVwIvE&list=TLPQMzAxMDIwMTk9ycJkiKUMvw&index=2
+
+            const carList = [
+                {id: 1, name: "Duster", year: 1980},
+                {id: 2, name: "Accord", year: 2019},
+                {id: 3, name: "Prius", year: 2010},
+                {id: 4, name: "Mustang", year: 2012}
+            ];
+
+            let newCars = [];
+
+            // Suppose you want to create a new array that
+            // holds some transformation of the old array
+            console.log("Transform - old way");
+            for (let i = 0; i < carList.length; i++) {
+                newCars.push(carList[i].year + " " + carList[i].name);
+            }
+            console.log(newCars);
+
+            console.log("Transform - using map");
+            newCars = carList.map(function (car) {
+                return car.year + " " + car.name;
+            });
+            console.log(newCars);
+            console.log();
+
+            console.log("Arrow Fn");
+            newCars = carList.map(doOne = (car) => {
+                return car.year + " " + car.name;
+            });
+            console.log(newCars);
+            console.log();
+
+            console.log("Anonymous Arrow Fn");
+            newCars = carList.map((car) => {
+                return car.year + " " + car.name;
+            });
+            console.log(newCars);
+            console.log();
+
+            console.log("Abbreviated");
+            newCars = carList.map(car => car.year + " " + car.name);
+            console.log(newCars);
+            console.log();
+
+        </script>
+    </body>
+</html>

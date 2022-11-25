@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>For Each (Functional Programming): Open F12 to See Output</h2>
+        <script>
+
+            // https://www.youtube.com/watch?v=rRgD1yVwIvE&list=TLPQMzAxMDIwMTk9ycJkiKUMvw&index=2
+
+            const carList = [
+                {id: 1, name: "Duster", year: 1980},
+                {id: 2, name: "Accord", year: 2019},
+                {id: 3, name: "Prius", year: 2010},
+                {id: 4, name: "Bug", year: 2012}
+            ];
+
+            console.log("for each - old way");
+            for (let i = 0; i < carList.length; i++) {
+                car = carList[i];
+                console.log(car.name);
+            }
+            console.log();
+
+            console.log("for each - functional programming (anonymous function)");
+            carList.forEach(function (car) {
+                console.log(car.name);
+            });
+            console.log();
+
+            console.log("named function declaration");
+            carList.forEach(function doOne(car) {
+                console.log(car.name);
+            });
+            console.log();
+
+            console.log("named function expression");
+            carList.forEach(doOne = function (car) {
+                console.log(car.name);
+            });
+            console.log();
+
+            console.log("arrow function");
+            carList.forEach(doOne = (car) => {
+                console.log(car.name);
+            });
+            console.log();
+
+            console.log("anonymous arrow function");
+            carList.forEach((car) => {
+                console.log(car.name);
+            });
+            console.log();
+
+            console.log("abbreviated arrow function");
+            carList.forEach(car => console.log(car.name));
+            console.log();
+
+
+        </script>
+    </body>
+</html>

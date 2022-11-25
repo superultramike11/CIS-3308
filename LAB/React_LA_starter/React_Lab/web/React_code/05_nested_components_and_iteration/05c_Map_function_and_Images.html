@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React Project</title>
+
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+        
+        <style>
+            .picDiv {
+
+            }
+            .picDiv p {
+                padding: 2em;
+                width:25%;
+                text-align: center;
+                background-color: #EEEEEE; /* light grey */
+                border: thin solid #AAAAAA; /* darker grey */
+                box-shadow: 4px 4px 4px #AAAAAA;
+                border-radius: 5px;
+                font-weight: bold;
+                font-family: sans-serif;
+                margin: auto;
+                margin-bottom: 20px;
+            }
+            .picDiv img {
+                width: 80%;
+                border-radius: 5px;
+                box-shadow: 3px 3px 3px #AAAAAA;
+                margin-bottom: 1em;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h3>Using Map Function with React Components</h3>
+        <p>
+            The JavaScript map function applies a function to each element in an array, 
+            saving the results of each function call into a new array. 
+        </p>
+        <div id="root"></div>
+        <script type="text/babel">
+
+            const userList = [
+                {
+                    "webUserId": "1",
+                    "userEmail": "sallyk",
+                    "image": "http://cis-linux2.temple.edu/~sallyk/_pics/sk_07_17.png"
+                },
+                {
+                    "webUserId": "2",
+                    "userEmail": "benAffleck@party.com",
+                    "image": "https://hairstyles.thehairstyler.com/hairstyle_views/front_view_images/6986/original/Ben-Affleck.jpg"
+                },
+                {
+                    "webUserId": "4",
+                    "userEmail": "donald@whiteHouse.gov",
+                    "image": "https://petapixel.com/assets/uploads/2017/01/Donald_Trump_official_portraitt.jpg"
+                },
+                {
+                    "webUserId": "5",
+                    "userEmail": "jenGarner@hollywood.com",
+                    "image": "https://i.pinimg.com/originals/55/08/a0/5508a0d858023e758892f09f35b53c93.jpg"
+                },
+                {
+                    "webUserId": "6",
+                    "userEmail": "oprah@talk.com",
+                    "image": "https://www.iceposter.com/thumbs/G339317_b.jpg"
+                }
+            ];
+
+            // you can rename mycar to anything else, just like any input parameter, 
+            // as long as you use that name consistently in the line below.
+            const App = ( {users} ) => (
+                <div className="picDiv">
+                    {
+                        users.map(user =>
+                            <p key={user.webUserId}> <img src={user.image} /> <br/> {user.userEmail} </p>
+                        )
+                    }
+                </div>
+            );
+
+            ReactDOM.render(
+                    <App users={userList} />,
+                    document.getElementById("root")
+            );
+
+
+            // NOT RELATED TO ABOVE CODE...
+            // understanding the JS map function: https://www.w3schools.com/jsref/jsref_map.asp
+            // applies a function to every element in an array, returns an array as output.
+            function understandMap() {
+                var numbers = [4, 9, 16, 25];
+                var x = numbers.map(Math.sqrt);
+                console.log(x); // x is an array with values [2, 3, 4, 5]
+            }
+
+        </script>
+    </body>
+</html>

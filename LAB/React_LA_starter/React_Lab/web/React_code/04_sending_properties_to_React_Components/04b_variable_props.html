@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React Project</title>
+        
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+        
+        <style>
+            .heading {
+                color: purple;
+            }
+        </style>
+    
+    </head>
+    <body>
+        <h3>Sending a Variable as a Property to a React Component</h3>
+        <p>
+        </p>
+        <div id="root"></div>
+        <div id="root2"></div>
+        
+        <script type="text/babel">
+            
+            // passing props to a component is like passing arguments to a function. 
+            // prints "You will love it" in the paragraph.
+            const Hello = (props) => {
+                return (
+                    <div className="heading">
+                        <h1>Welcome to {props.library}</h1>
+                        <p>{props.message}</p> 
+                    </div>
+                );
+            };
+            
+            let myMessage = "You will love it";
+            ReactDOM.render(
+                <Hello library="React Programming" message={myMessage} />,
+                document.getElementById("root")
+            );
+                   
+        </script>
+    </body>
+</html>

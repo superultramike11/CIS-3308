@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="fruitList.css" rel="stylesheet"/>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h2>Component from ObjList - Fixed Using Let Keyword</h2>
+
+        <div id="content"></div>
+        <script>
+            "use strict";
+        </script>
+        <script src="06_MakeFruitList.js"></script>
+        <script>
+
+            // ENTRY POINT FOR SCRIPT ON HTML PAGE
+            var content = document.getElementById("content");
+            var comp1 = MakeFruitList([
+                {
+                    fruit: "lime",
+                    color: "green"
+                },
+                {
+                    fruit: "cherry",
+                    color: "red"
+                },
+                {
+                    fruit: "lemon",
+                    color: "yellow"
+                }
+            ]);
+
+            content.appendChild(comp1);
+
+        </script>
+    </body>
+</html> 

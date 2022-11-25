@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Reduce (Functional Programming): Open F12 to See Output</h2>
+        <script>
+
+            // https://www.youtube.com/watch?v=rRgD1yVwIvE&list=TLPQMzAxMDIwMTk9ycJkiKUMvw&index=2
+
+            const carList = [
+                {id: 1, name: "Duster", price: 3000},
+                {id: 2, name: "Accord", price: 20000},
+                {id: 3, name: "Prius", price: 15000},
+                {id: 4, name: "Mustang", price: 8000}
+            ];
+
+            console.log("Summation - old way");
+            let total = 0;
+            for (let i = 0; i < carList.length; i++) {
+                total = total + carList[i].price;
+            }
+            console.log(total);
+
+            console.log("Summation - using reduce");
+            // reduce 1st param: function
+            // reduce 2nd param: initial value for group variable/total.
+            total = carList.reduce(function (total, car) {
+                return total + car.price;
+            }, 0);
+            console.log(total);
+            console.log();
+
+            console.log("Concatenation - using reduce");
+            // reduce 1st param: function
+            // reduce 2nd param: initial value for group variable/total.
+            var output = carList.reduce(function (output, car) {
+                return output + car.name + " ";
+            }, "");
+            console.log("output is "+output);
+            console.log();
+
+            console.log("Summation - arrow Fn");
+            // reduce 1st param: function
+            // reduce 2nd param: initial value for group variable/total.
+            total = carList.reduce(doOne = (total, car) => {
+                return total + car.price;
+            }, 0);
+            console.log(total);
+            console.log();
+
+            console.log("anonymous arrow Fn");
+            // reduce 1st param: function
+            // reduce 2nd param: initial value for group variable (total).
+            total = carList.reduce((total, car) => {
+                return total + car.price;
+            }, 0);
+            console.log(total);
+            console.log();
+
+            console.log("abbreviated");
+            // reduce 1st param: function
+            // reduce 2nd param: initial value for group variable/total.
+            total = carList.reduce((total, car) => total + car.price, 0);
+            console.log(total);
+            console.log();
+
+        </script>
+    </body>
+</html>

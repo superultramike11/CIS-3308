@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React Project</title>
+
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+
+
+    </head>
+    <body>
+        <h3>React Component Defined by ES6 Arrow Function</h3>
+        <p>
+        </p>
+        <div id="root"></div>
+        <script type="text/babel">
+            
+            function Hello() {
+                return (
+                    <div>
+                        <h1>Welcome to React</h1> 
+                        <h3>You will Love It</h3>
+                    </div>
+                );
+            }
+
+            // To learn about ES6 Arrow Functions: https://www.w3schools.com/js/js_arrow_function.asp
+            // Can only be used with single line functions.
+            const Hello2 = () => {
+                return (
+                        <h1>Welcome to React</h1>
+                        );
+            };
+
+            const Hello3 = () => <h1>Welcome to My React</h1>;
+            
+            ReactDOM.render(
+                    <Hello3 />,
+                    document.getElementById("root")
+                    );
+        </script>
+    </body>
+</html>

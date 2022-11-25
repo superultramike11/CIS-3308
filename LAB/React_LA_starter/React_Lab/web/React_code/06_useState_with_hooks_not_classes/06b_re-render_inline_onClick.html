@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+
+    </head>
+    <body>
+        <h3>Components are Re-rendered When React State Changes</h3>
+        <p>
+            This example uses the newest release of React (will not work with earlier version of React 
+            CDNs). Using React.useState(), things are very clean and easy to understand. 
+        </p>
+        <div id="output"></div>
+
+        <script type="text/babel">
+                       
+            // Reference: https://reactjs.org/docs/hooks-state.html
+
+            const Counter = () => {
+                
+                // Declare a new state variable, which we'll call "count"
+                // Initialize it's value to 0. Then we will 
+                // use setCount to change the value of count.
+                const [count, setCount] = React.useState(0);
+
+                return (
+                    <div>
+                        <p>You clicked {count} times</p>
+                        <button onClick={ () => setCount(count + 1) }>
+                            Click me
+                        </button>
+                    </div>
+                );
+            };
+
+            ReactDOM.render(
+                <Counter />,
+                document.getElementById("output")
+            );
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React Project</title>
+        
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+        
+    </head>
+    <body>
+        <h3>Nesting React Components</h3>
+        <p>
+        </p>
+        <div id="root"></div>
+        <script type="text/babel">
+            
+           // Uses ES6 Arrow Function and destructuring
+            const Car3 = ({name}) => <h4>{name}</h4>;
+            
+            // Uses just destructuring
+            function Car2 ({name}) {
+                return <h4>{name}</h4>;
+            }
+            
+            // uses neither arrow function nor destructuring
+            function Car1 (props) {
+                return <h4>{props.name}</h4>;
+            }
+
+            const App = () => (
+                <div>
+                    <Car3 name="Duster" />
+                    <Car3 name="Prius" />
+                    <Car3 name="Accord" />
+                </div>
+            );
+            
+            ReactDOM.render(
+                <App />,
+                document.getElementById("root")
+            );
+        </script>
+    </body>
+</html>

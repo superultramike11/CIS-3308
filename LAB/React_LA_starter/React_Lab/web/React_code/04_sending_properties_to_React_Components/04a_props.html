@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React Project</title>
+        
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+        
+        <style>
+            .heading {
+                color: purple;
+            }
+        </style>
+    
+    </head>
+    <body>
+        <h3>Sending Properties to React Component</h3>
+        <p>
+            One component defined with ES6 Arrow Function. One defined with regular JavaScript function.
+        </p>
+        <div id="root"></div>
+        <div id="root2"></div>
+        
+        <script type="text/babel">
+            
+            // passing props to a component is like passing arguments to a function. 
+            // props.library and props.message exist because they were provided 
+            // (in a syntax that made them look like HTML attributes in the call). 
+            const Hello = (props) => {
+                return (
+                    <div className="heading">
+                        <h1>Welcome to {props.library}</h1>
+                        <p>{props.message}</p>
+                    </div>
+                );
+            };
+            
+            // The above Hello function could be written like this (if you dont want to use
+            // ES6 arrow function).
+            function Hello2 (props) {
+                return (
+                    <div className="heading">
+                        <h1>Welcome to {props.library}</h1>
+                        <p>{props.message}</p>
+                    </div>
+                );
+            }
+                       
+            // library and message are "props" (or properties) passed to React component (function) Hello.
+            ReactDOM.render(
+                <Hello  library="React" message="Enjoy!" />,
+                document.getElementById("root")
+            );
+                
+            ReactDOM.render(
+                <Hello2 library="Temple's Library" message="Have Fun!"/>,
+                document.getElementById("root2")
+            );
+    
+        </script>
+    </body>
+</html>

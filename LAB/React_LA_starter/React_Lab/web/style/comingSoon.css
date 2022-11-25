@@ -1,0 +1,15 @@
+.comingSoon {
+    border: thin solid black;
+}
+
+.comingSoon h3 {
+    color: pink;
+}
+
+.comingSoon h1 {
+    color: green;
+}
+
+.comingSoon p {
+    font-family: serif;
+}

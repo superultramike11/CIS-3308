@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Filter (Functional Programming): Open F12 to See Output</h2>
+        <script>
+
+            // https://www.youtube.com/watch?v=rRgD1yVwIvE&list=TLPQMzAxMDIwMTk9ycJkiKUMvw&index=2
+
+
+            const carList = [
+                {id: 1, name: "Duster", year: 1980},
+                {id: 2, name: "Accord", year: 2019},
+                {id: 3, name: "Prius", year: 2010},
+                {id: 4, name: "Mustang", year: 2012}
+            ];
+
+            let newCars = [];
+            var j = 0;
+            console.log("filter - old way");
+            for (let i = 0; i < carList.length; i++) {
+                if (carList[i].year > 2011) {
+                    j++;
+                    newCars[j] = carlist[i];
+                    //newCars.push(carList[i]);
+                }
+            }
+            console.log(newCars);
+
+            console.log("filter - new way anonymous");
+            newCars = carList.filter(function (car) {
+                if (car.year > 2011) {
+                    return true;
+                }
+            });
+            console.log(newCars);
+
+            console.log("arrow function");
+            newCars = carList.filter(doOne = (car) => {
+                if (car.year > 2011) {
+                    return true;
+                }
+            });
+            console.log(newCars);
+
+            console.log("anonymous arrow function");
+            newCars = carList.filter(car => {
+                return (car.year > 2011);
+            });
+            console.log(newCars);
+
+            console.log("more abbreviated");
+            newCars = carList.filter(car => car.year > 2011);
+            console.log(newCars);
+
+        </script>
+    </body>
+</html>

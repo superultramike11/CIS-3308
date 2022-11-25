@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="output">TODO write content</div>
+        <script>
+            var personName = "Sally";
+            var dept = "CIS";
+            var message = `${personName} is an instructor in the ${dept} department`;
+            console.log(message);
+            document.getElementById("output").innerHTML = message;      
+            // injects "Sally is an instructor in the CIS department" onto the page.
+        </script>
+    </body>
+</html>

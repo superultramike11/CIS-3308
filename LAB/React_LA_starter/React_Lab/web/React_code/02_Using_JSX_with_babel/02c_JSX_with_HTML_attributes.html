@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>React Examples</title>
+
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+        
+        <style>
+            .place {
+                color: blue;
+            }
+            #myCity {
+                background-color:yellow;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h3>ReactDom.render with JSX</h3>
+        <p>
+            You can use HTML attributes with JSX. 
+        </p>
+        <div id="greeting-div"></div>
+
+        <script type="text/babel">  // Must use this script type if you want to use JSX with babel
+
+            var city = "Madrid";
+
+            // You have to use className (not class) because class is a keyword in JavaScript, but 
+            // other attribute names should be OK (like id, etc).
+            ReactDOM.render(
+                <h1 id="myCity" className="place">Hello {city} </h1>,
+                document.getElementById("greeting-div")
+            );
+
+        </script>
+    </body>
+</html>

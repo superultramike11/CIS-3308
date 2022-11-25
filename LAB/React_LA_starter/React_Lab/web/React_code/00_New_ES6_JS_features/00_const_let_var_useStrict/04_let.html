@@ -1,0 +1,48 @@
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Open Chrome Console to See Output</h2>
+        <h4>Here's the code:</h4>
+        <pre>
+    function f1() {
+        if (1 === 1) {
+            var x = 5; // scope is function of declaration
+        }
+        console.log(x); // prints 5
+    }
+    f1();
+
+    function f2() {
+        if (1 === 1) {
+            let x = 5; // scope is block of declaration (like java)
+        }
+        console.log(x); // uncaught reference error, x not defined.
+    }
+    f2();
+    console.log("I'm still running");
+        </pre>
+        <script>
+            function f1() {
+                if (1 === 1) {
+                    var x = 5; // scope is function of declaration
+                }
+                console.log(x); // prints 5
+            }
+            f1();
+            
+            function f2() {
+                if (1 === 1) {
+                    let x = 5; // scope is block of declaration (like java)
+                }
+                console.log(x); // uncaught reference error, x not defined.
+            }
+            f2();
+            console.log("I'm still running");
+        </script>
+    </body>
+</html>

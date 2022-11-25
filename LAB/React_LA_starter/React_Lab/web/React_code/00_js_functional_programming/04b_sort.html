@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Sort (Functional Programming): Open F12 to See Output</h2>
+        <script>
+
+            // https://www.youtube.com/watch?v=rRgD1yVwIvE&list=TLPQMzAxMDIwMTk9ycJkiKUMvw&index=2
+
+            const carList = [
+                {id: 1, name: "Duster", year: 1980},
+                {id: 2, name: "Accord", year: 2019},
+                {id: 3, name: "Prius", year: 2010},
+                {id: 4, name: "Mustang", year: 2012}
+            ];
+
+
+            // Suppose you want to create a new array that
+            // is a sorted version of the first array.
+            console.log("Using JS Sort - by Year");
+            let carsByYear = carList.sort(function (a, b) {
+                // will return positive if car1 greater
+                // will return negative if car2 greater
+                // will return 0 if equal
+                return a.year - b.year;
+            });
+            console.log(carsByYear);
+
+        </script>
+    </body>
+</html>

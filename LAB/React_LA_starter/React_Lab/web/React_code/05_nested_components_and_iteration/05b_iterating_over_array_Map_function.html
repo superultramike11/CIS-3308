@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React Project</title>
+        
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+        
+    </head>
+    <body>
+        <h3>Using Map Function with React Components</h3>
+        <p>
+            The JavaScript map function applies a function to each element in an array, 
+            saving the results of each function call into a new array. 
+        </p>
+        <div id="root"></div>
+        <script type="text/babel">
+
+            // you can rename mycar to anything else, just like any input parameter, 
+            // as long as you use that name consistently in the line below.
+            const App = ( {cars} ) => (
+                <ul>
+                    {
+                        cars.map(mycar => 
+                            <li key={mycar.id}>{mycar.year} {mycar.name}</li>    
+                        )
+                    }
+                </ul>
+            );
+    
+            const carList = [
+                {id: 1, name: "Duster", year: 1980}, 
+                {id: 2, name: "Prius", year: 2010}, 
+                {id: 3, name: "Accord", year: 2019}
+            ];
+            
+            ReactDOM.render(
+                <App cars= {carList}  />,
+                document.getElementById("root")
+            );
+
+
+            // NOT RELATED TO ABOVE CODE...
+            // understanding the JS map function: https://www.w3schools.com/jsref/jsref_map.asp
+            // applies a function to every element in an array, returns an array as output.
+            function understandMap() {
+                var numbers = [4, 9, 16, 25];
+                var x = numbers.map(Math.sqrt);
+                console.log(x); // x is an array with values [2, 3, 4, 5]
+            }
+
+        </script>
+    </body>
+</html>

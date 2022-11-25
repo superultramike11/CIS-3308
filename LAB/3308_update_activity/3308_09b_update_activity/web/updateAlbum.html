@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Update Album</title>
+
+        <!-- This is how you link to an external style sheet. -->
+        <link href="style/myStyle.css" rel="stylesheet" type="text/css" />  
+        <link href="style/insertStyle.css" rel="stylesheet" type="text/css" /> 
+
+        <link rel="shortcut icon" href="favicon.ico">
+    </head>
+    <body>
+
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                Update Album Tester
+            </div>
+
+            <div id="nav">
+                <a target="_blank" href="webAPIs/listUsersAPI.jsp">User List</a> |
+                <a target="_blank" href="updateAlbum.html">Update User Tester</a> |
+                <a target="_blank" href="webAPIs/listAlbumAPI.jsp">Album List</a>
+            </div>
+
+            <!-- Must stop the floating so that elements below (e.g., content) 
+            don't float up into here. -->
+            <div class="stopFloat"></div>
+        </div>
+
+        <br/>
+        <div id="content">
+            <!-- 
+                It is very useful to copy/paste the data obtained by running the insert API
+                directly (like what i did below). This will let you know the exact field names
+                that you used in your StringData (java object - because gson uses these when it 
+                converts java object to JSON). 
+
+                You can name the ids (in the HTML below) anything you like, but it may be simplest to 
+                just name them exactly the same as you did when you created your StringData 
+                field names (less field name mappings for you to have to remember).
+
+                {
+                album_id: "Please enter an integer",
+                album_name: "",
+                album_cover: "",
+                album_price: "",
+                album_release_date: "",
+                album_genre: "",
+                album_author: "",
+                album_rating: "",
+                web_user_id: "Please enter an integer",
+                user_email: "",
+                errorMsg: "Please try again"
+                }
+            -->
+            <div id="insertArea">
+
+                <table>
+                    <tr>
+                        <td>Album ID</td>
+                        <td><input type="text"  id="album_id" /></td>
+                        <td><button onclick="getUserData()">Get Album Data</button></td> 
+                        <td id="album_id_error" class="error"></td> 
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td>Album Name</td>
+                        <td><input type="text"  id="album_name" /></td>
+                        <td id="album_name_error" class="error"></td> 
+                    </tr>
+                    <tr>
+                        <td>Album Cover</td>
+                        <td><input type="text"  id="album_cover" /></td>
+                        <td id="album_cover_error" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Album Price</td>
+                        <td><input type="text" id="album_price" /></td>
+                        <td id="album_price_error" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Album Release Date</td>
+                        <td><input type="text" id="album_release_date" /></td>
+                        <td id="album_release_date_error" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Album Genre</td>
+                        <td><input type="text" id="album_genre" /></td>
+                        <td id="album_genre_error" class="error"></td> 
+                    </tr>
+                    <tr>
+                        <td>Album Author</td>
+                        <td><input type="text" id="album_author" /></td>
+                        <td id="album_author_error" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Album Rating</td>
+                        <td><input type="text" id="album_rating" /></td>
+                        <td id="album_rating_error" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Web User ID</td>
+                        <td><input type="text" id="web_user_id" /></td>
+                        <td id="web_user_id_error" class="error"></td>
+                    </tr>
+                    
+                    <tr>
+                        <!-- see js/insertUser.js to see the insertUser function (make sure index.html references the js file) -->
+                        <td><button onclick="updateSave()">Save</button></td>
+                        <td id="recordError" class="error"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div> <!-- content. [[Keep track of nesting]] -->
+
+        <div id="footer">
+            [Michael Ewing:tuj25271@temple.edu]
+        </div>
+
+        <script src="js/ajax.js"></script>
+
+        <script>
+                            /*
+                            {
+                            album_id: "Please enter an integer", DETERMINATE
+                            album_name: "",
+                            album_cover: "",
+                            album_price: "",
+                            album_release_date: "",
+                            album_genre: "",
+                            album_author: "",
+                            album_rating: "",
+                            web_user_id: "Please enter an integer",
+                            user_email: "",
+                            errorMsg: "Please try again"
+                            }
+                            */
+
+                            function getUserData() {
+                                var albumId = document.getElementById("album_id").value;
+                                var url = "webAPIs/getAlbumByIdAPI.jsp?albumId=" + encodeURI(albumId);
+                                ajax(url, gotAlbumData, document.getElementById("album_id_error"));
+
+                                function gotAlbumData(obj) {
+                                    document.getElementById("album_id").value = obj.album_id;
+                                    document.getElementById("album_name").value = obj.album_name;
+                                    document.getElementById("album_cover").value = obj.album_cover;
+                                    document.getElementById("album_price").value = obj.album_price;
+                                    document.getElementById("album_release_date").value = obj.album_release_date;
+                                    document.getElementById("album_genre").value = obj.album_genre;
+                                    document.getElementById("album_author").value = obj.album_author;
+                                    document.getElementById("album_rating").value = obj.album_rating;
+                                    document.getElementById("web_user_id").value = obj.web_user_id;
+                                    document.getElementById("recordError").value = obj.errorMsg;
+                                }
+                            }
+
+
+                            function updateSave() {
+                                console.log("insertSave was called");
+
+                                // create a user object from the values that the user has typed into the page.
+                                var userInputObj = {
+                                    "album_id": document.getElementById("album_id").value,
+                                    "album_name": document.getElementById("album_name").value,
+                                    "album_cover": document.getElementById("album_cover").value,
+                                    "album_price": document.getElementById("album_price").value,
+                                    "album_release_date": document.getElementById("album_release_date").value,
+                                    "album_genre": document.getElementById("album_genre").value,
+                                    "album_author": document.getElementById("album_author").value,
+                                    "album_rating": document.getElementById("album_rating").value,
+                                    "web_user_id": document.getElementById("web_user_id").value,
+                                    "errorMsg": ""
+                                };
+                                console.log(userInputObj);
+
+                                // build the url for the ajax call. Remember to encodeURI the user input object or else 
+                                // you may get a security error from the server. JSON.stringify converts the javaScript
+                                // object into JSON format (the reverse operation of what gson does on the server side).
+                                var myData = encodeURI(JSON.stringify(userInputObj));
+                                var url = "webAPIs/updateAlbumAPI.jsp?jsonData=" + myData;
+                                ajax(url, ajaxSuccess, document.getElementById("recordError"));
+
+                                function ajaxSuccess(jsonObj) {
+                                    // Running this function does not mean insert success. It just means that the Web API
+                                    // call (to insert the record) was successful.
+                                    // 
+                                    // the server prints out a JSON string of an object that holds field level error 
+                                    // messages. The error message object (conveniently) has its fiels named exactly 
+                                    // the same as the input data was named. 
+                                    console.log("here is JSON object (holds error messages.");
+                                    console.log(jsonObj);
+
+                                    document.getElementById("album_id_error").innerHTML = jsonObj.album_id;
+                                    document.getElementById("album_name_error").innerHTML = jsonObj.album_name;
+                                    document.getElementById("album_cover_error").innerHTML = jsonObj.album_cover;
+                                    document.getElementById("album_price_error").innerHTML = jsonObj.album_price;
+                                    document.getElementById("album_release_date_error").innerHTML = jsonObj.album_release_date;
+                                    document.getElementById("album_genre_error").innerHTML = jsonObj.album_genre;
+                                    document.getElementById("album_author_error").innerHTML = jsonObj.album_author;
+                                    document.getElementById("album_rating_error").innerHTML = jsonObj.album_rating;
+                                    document.getElementById("web_user_id_error").innerHTML = jsonObj.web_user_id;
+                                    
+                                    if (jsonObj.errorMsg.length === 0) { // success
+                                        jsonObj.errorMsg = "Record successfully updated !!!";
+                                    }
+                                    document.getElementById("recordError").innerHTML = jsonObj.errorMsg;
+                                }
+                            }
+        </script>
+    </body>
+</html>

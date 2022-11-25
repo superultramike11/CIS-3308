@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+
+    </head>
+    <body>
+        <h3>Components are Re-rendered When React State Changes (Slight Change)</h3>
+        <p>
+            The change from previous version is that we created Counter.inc (a function in Counter 
+            component) and reference that from the onClick event. 
+        </p>
+        <div id="output"></div>
+
+        <script type="text/babel">
+                       
+            // Reference: https://reactjs.org/docs/hooks-state.html
+
+            const Counter = () => {
+                
+                // Declare a new state variable, which we'll call "count"
+                // Initialize it's value to 0. 
+                // Use setCount to change the value of count.
+                const [count, setCount] = React.useState(10);
+                
+                const inc = () => {
+                    setCount(count+1);
+                };
+
+                return (
+                    <div>
+                        <p>You clicked {count} times</p>
+                        <button onClick={ inc }>
+                            Click me
+                        </button>
+                    </div>
+                );
+            };
+
+            ReactDOM.render(
+                <Counter />,
+                document.getElementById("output")
+            );
+
+        </script>
+    </body>
+</html>

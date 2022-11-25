@@ -1,0 +1,23 @@
+.sportsTable {
+    border: thin solid black;
+}
+
+.sportsTable thead {
+    background-color: #AAAACC;
+}
+
+.sportsTable tbody {
+    background-color: #DDDDDD;
+}
+
+.sportsTable td {
+    padding: 0.25rem;
+}
+
+.sportsTable .name {
+    text-align: left;
+}
+
+.sportsTable .num {
+    text-align: right;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ES6 Destructuring</title>
+    </head>
+    <body>
+        <h3>
+            Press F12 (open JS console) to see output.
+        </h3>
+        <p>
+            ES6 Destructuring an Object, Destructuring an Array
+        </p>
+        <script>
+            //  https://codeburst.io/a-pocket-guide-to-destructuring-assignment-in-es6-f89c172a00b9
+            
+            // let is like var (declares a variable) but has block scope (like java)
+            // insead of function scope (like older JavaScript ES5)
+            
+            // ES6 object destructuring (assigns by property name)
+            let {b, a} = {a: "apple", b: "banana", c:"carrot"};     
+            console.log("a is " + a + " and b is " + b); // prints: a is apple and b is banana
+
+            // ES6 array destructuring (assigns by position)
+            let [ d, f, g, h, i ] = [ "dog", "frog", "goat", "elephant" ];             
+            console.log("d is " + d + ", f is " + f + 
+                    ", and g is " + g); // prints: d is dog, f id frog, and g is goat
+            console.log(i);
+            console.log("still running");
+        </script>
+    </body>
+</html>

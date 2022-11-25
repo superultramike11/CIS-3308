@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React Project</title>
+        
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+
+        <style>
+            .error {
+                font-weight: bold;
+                color:red;
+            }
+            .msg {
+                font-weight: bold; 
+                color:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Input Validation</h3>
+        <p>
+            This example causes a validate function to run each time the button is clicked. 
+            The validate function will set one error message per textbox as well as a 
+            "form level" message.
+        </p>
+        <p>
+            You may wonder why I created one local variable per state variable in 
+            function validate. The reason is because setting a state variable is 
+            asynchronous (does not happen right away). Because I needed the values 
+            right away, I used "regular" JavaScript variables to set the error 
+            messages, then from there set the React state variables for those 
+            error messages. Here is a link: 
+        </p>
+        <p>
+            https://dev.to/dance2die/accessing-react-state-right-after-setting-it-2kc8
+        </p>
+<div id="root"></div>
+<script type="text/babel">
+
+    "use strict";
+
+const ValidationForm = () => {
+
+    // an object full of user entered data. Each property is linked to the 
+    // value attribute of a textbox.
+    const [userData, setUserData] = React.useState({ 
+        name:"",
+        birthYear:"1957"
+    });
+
+    // an object full of error message properties. Each error message property
+    // is related to the userData property of the same name.
+    const [errors, setErrors] = React.useState({ 
+        name:"",
+        birthYear:"",
+        form:""
+    });
+
+    console.log("React is re-rendering userData and errors");
+    console.log(userData);
+    console.log(errors);
+    console.log("done with re-render msg");
+
+    const validate = () => {
+        console.log("validate is running, userData is first, then errors");
+        console.log(userData);
+        console.log(errors); 
+        console.log("end of validate debug message");
+
+        var nameMsg = "";
+        if (userData.name.length === 0) {
+            nameMsg="Required";
+        } 
+
+        var birthYearMsg = "";
+        if (userData.birthYear.length === 0) {
+            birthYearMsg = "Required";
+          } else if (isNaN(userData.birthYear)) {
+            birthYearMsg = "Please enter a number";
+        }
+
+        var formMsg = "Your input will be processed.";
+        var allMsgs = nameMsg + birthYearMsg;
+        if (allMsgs.length > 0) {
+            formMsg = "Please try again.";
+        } 
+
+        setErrors ({
+            name:nameMsg,
+            birthYear:birthYearMsg,
+            form: formMsg
+        });
+    }; 
+
+
+    // This is shorter, makes a copy (then changes a value of a property of 
+    // the copy) using new ES6 Object.assign function.
+    const setProp2 = (obj, propName, propValue) => {
+        var o = Object.assign({}, obj);
+        o[propName] = propValue;
+        console.log("setProp2 orig object is");
+        console.log(obj);
+        console.log("after changing "+propName+" to "+propValue+" the new obj is");
+        console.log(o);
+        return o;
+    };
+
+
+    return (
+        <div>
+            Name: <input value={userData.name} onChange=
+                {e=> setUserData(setProp2(userData,"name", e.target.value)) } />                  
+            &nbsp; <span className="error">{errors.name}</span>  <br/><br/>
+
+            Birth Year <input value={userData.birthYear} onChange=
+                {e=> setUserData( setProp2(userData, "birthYear",  e.target.value ) ) } />   
+            &nbsp; <span className="error">{errors.birthYear}</span>   <br/><br/>
+
+            <button type="button" onClick={ validate } >Click Me (Button not Submit)</button>   <br/><br/>
+            <span className="msg">{errors.form}</span>
+        </div>
+    );
+};
+
+    ReactDOM.render(
+        <ValidationForm />,
+        document.getElementById("root")
+    );
+
+</script>
+    </body>
+</html>

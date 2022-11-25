@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>Press F12 to see output in console</h3>
+        <script>
+            "use strict"; // means you want the browser to throw an error 
+
+            // if ever you attempt to use a variable without first declaring it.
+
+            function myfunc() {
+                x = 5;
+                console.log(x + " Inside the function");
+            }
+
+            //myfunc();
+
+            //console.log(x + " Outside the function");
+
+            // "use strict" was actually introduced in ES5, but it is important, so I mention it here.
+
+            function hello() {
+                console.log("hello world");
+            } // this is ok to define a function "the normal way"
+
+            hello(); // works fine
+
+            // needs let, var, or const in front of hello2. 
+            const hello2 = function () {
+                console.log("hello city");
+            };  // generates error:  hello2 not defined (declared). 
+
+            hello2();
+
+
+        </script>
+    </body>
+</html>

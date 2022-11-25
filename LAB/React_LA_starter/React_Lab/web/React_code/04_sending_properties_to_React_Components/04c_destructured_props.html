@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React Project</title>
+        
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+        
+        <style>
+            .heading {
+                color: purple;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h1>Sending Properties to React Component</h1>
+        <h4>Using ES6 Object Destructuring (of input parameter) and Fat Arrow Functions</h4>
+        <p></p>
+        
+        <div id="root1"></div>
+        <div id="root2"></div>
+        <div id="root3"></div>
+        <div id="root4"></div>
+                
+        <script type="text/babel">
+            
+            // This version NOT using destructuring and not using fat arrow function. 
+            function Hello1 (props) {
+                return (
+                    <div className="heading">
+                        <h3>Welcome to {props.library}</h3>
+                        <p>{props.message}</p>
+                    </div>
+                );
+            };
+
+            // using destructuring (in the input parameter). 
+            // See link and code example below to learn about destructuring.
+            const Hello2 = ( {library, message} ) => {
+                return (
+                    <div className="heading">
+                        <h3>Welcome to {library}</h3>
+                        <p>{message}</p>
+                    </div>
+                );
+            };
+            
+            // using fat arrow 
+            const Hello3 = (props) => {
+                return (
+                    <div className="heading">
+                        <h3>Welcome to {props.library}</h3>
+                        <p>{props.message}</p>
+                    </div>
+                );
+            };
+            
+
+            // using fat arrow and destructuring
+            const Hello4 = ( {library, message} ) => {
+                return (
+                    <div className="heading">
+                        <h3>Welcome to {library}</h3>
+                        <p>{message}</p>
+                    </div>
+                );
+            };
+            
+            ReactDOM.render(
+                <Hello1 library="React1" message="Plain (no destructuring, no fat arrow)"/>,
+                document.getElementById("root1")
+            );
+    
+            ReactDOM.render(
+                <Hello2 library="React2" message="Destructuring"/>,
+                document.getElementById("root2")
+            );
+    
+            ReactDOM.render(
+                <Hello3 library="React3" message="Fat Arrow"/>,
+                document.getElementById("root3")
+            );
+            
+            ReactDOM.render(
+                <Hello4 library="React4" message="Fat Arrow and Destructuring"/>,
+                document.getElementById("root4")
+            );
+
+
+            // understanding destructuring...
+            // https://javascript.info/destructuring-assignment#object-destructuring
+            let options = {
+                title: "Menu",
+                width: 100,
+                height: 200
+            };
+
+            let {title, width, height} = options;
+
+            console.log(title);  // prints Menu
+            console.log(width);  // prints 100
+            console.log(height); // prints 200
+
+        </script>
+    </body>
+</html>

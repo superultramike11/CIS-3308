@@ -28,10 +28,16 @@ public class StringData {
     public String album_rating = "";
     public String web_user_id = "";
     public String user_email = "";
+    
     public String errorMsg = "";
 
     // default constructor leaves all data members with empty string (Nothing null).
     public StringData() {
     }
 
+    public int getCharacterCount() {
+        String s = this.album_id + this.album_name + this.album_cover + this.album_price + this.album_release_date
+                + this.album_genre + this.album_author + this.album_rating + this.web_user_id + this.user_email;
+        return s.length();
+    }
 }

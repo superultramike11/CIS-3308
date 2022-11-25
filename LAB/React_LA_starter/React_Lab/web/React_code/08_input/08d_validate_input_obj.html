@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React Project</title>
+        
+        <!-- Reference the React CDNs (Content Delivery Networks, basically just a hosted web resource) -->
+        <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js' ></script>
+        <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' ></script>
+        
+        <!-- By referencing the Babel CDN, we can use JSX (HTML tags in JavaScript) --> 
+        <script crossorigin src='https://unpkg.com/babel-standalone@6/babel.min.js' ></script>  
+        
+        <style>
+            .error {
+                font-weight: bold;
+                color:red;
+            }
+            .msg {
+                font-weight: bold; 
+                color:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Input Validation</h3>
+        <p>
+            This example causes a validate function to run each time the button is clicked. 
+            The validate function will set one error message per textbox as well as a 
+            "form level" message.
+        </p>
+        <p>
+            You may wonder why I created one local variable per state variable in 
+            function validate. The reason is because setting a state variable is 
+            asynchronous (does not happen right away). Because I needed the values 
+            right away, I used "regular" JavaScript variables to set the error 
+            messages, then from there set the React state variables for those 
+            error messages. Here is a link: 
+        </p>
+        <p>
+            https://dev.to/dance2die/accessing-react-state-right-after-setting-it-2kc8
+        </p>
+<div id="root"></div>
+<script type="text/babel">
+
+    "use strict";
+
+    const ValidationForm = () => {
+        
+        const [userData, setUserData] = React.useState({ 
+            name:"myName",
+            birthYear:"1957"
+        });
+    
+        const [nameMsg, setNameMsg] = React.useState(''); // '' is the initial value of the state variable
+        const [birthYearMsg, setBirthYearMsg] = React.useState(''); // '' is the initial state value
+        const [formMsg, setFormMsg] = React.useState(''); // '' is the initial state value
+
+        
+        console.log(userData);
+        
+        const validate = () => {
+
+            var localNameMsg = "";
+            console.log("validate is running");
+            if (userData.name.length === 0) {
+                localNameMsg="Required";
+            } 
+            setNameMsg(localNameMsg);  
+
+            var localBirthYearMsg = "";
+            if (userData.birthYear.length === 0) {
+                localBirthYearMsg = "Required";
+              } else if (isNaN(userData.birthYear)) {
+                localBirthYearMsg = "Please enter a number";
+            }
+            setBirthYearMsg(localBirthYearMsg);  
+
+            var allMsgs = localNameMsg + localBirthYearMsg;
+            if (allMsgs.length ===0) {
+                setFormMsg("Thank you. Your input will be processed.");
+            } else {
+                setFormMsg("Please try again.");
+            }
+        }; 
+        
+        // we have to make a copy of the object (with changed property)
+        // so react knows to re-render and update state. 
+        // can't do it the normal way (see below) because that just creates reference not copy:
+        //     let newObj = oldOjb; // does not work for React
+        // This function works for React. It makes a copy of an object then sets a property of the 
+        // object to a value. 
+        const setProp1 = (obj, propName, propValue) => {
+            let o = {};
+            for (var prop in obj) {
+                o[prop] = obj[prop];
+            }
+            o[propName] = propValue;
+            return o;
+        };
+        
+// https://medium.com/better-programming/3-ways-to-clone-objects-in-javascript-f752d148054d
+/*
+function bestCopyEver(src) {
+  return Object.assign({}, src);
+}
+const source = {a:1, b:2, c:3};
+const target = bestCopyEver(source);
+console.log(target); // {a:1, b:2, c:3}
+
+// Check if clones it and not changing it
+source.a = 99;
+console.log(source.a); // 99
+console.log(target.a); // 1
+*/
+        
+        // This is shorter, makes a copy (then changes a value of a property of 
+        // the copy) using new ES6 Object.assign function.
+        const setProp2 = (obj, propName, propValue) => {
+            var o = Object.assign({}, obj);
+            o[propName] = propValue;
+            return o;
+        };
+        
+// initial reference trying to have an object property used in textbox in React.       
+// https://blog.logrocket.com/a-guide-to-usestate-in-react-ecb9952e406c/
+ /*       
+    <input type="text" value={messageObj.message}  onChange=
+        {e => 
+            {
+                const val = e.target.value;
+                setMessage(prevState => { return { ...prevState, message: val } } );
+            }
+        }
+    />
+*/
+
+        return (
+            <div>
+                Name: <input value={userData.name} onChange=
+                    {e=> 
+                        {
+                            let obj = setProp1(userData,"name", e.target.value);
+                            setUserData(obj);
+                        }
+                    } />                  
+                &nbsp; <span className="error">{nameMsg}</span>  <br/><br/>
+                Birth Year <input value={userData.birthYear} onChange=
+                    {e=> setUserData( setProp2(userData, "birthYear",  e.target.value ) ) } />   
+                &nbsp; <span className="error">{birthYearMsg}</span>   <br/><br/>
+                <button type="button" onClick={ validate } >Click Me (Button not Submit)</button>   <br/><br/>
+                <span className="msg">{formMsg}</span>
+            </div>
+        );
+    };
+
+    ReactDOM.render(
+        <ValidationForm />,
+        document.getElementById("root")
+    );
+
+</script>
+    </body>
+</html>

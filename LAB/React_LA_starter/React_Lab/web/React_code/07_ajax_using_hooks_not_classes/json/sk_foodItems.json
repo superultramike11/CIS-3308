@@ -1,0 +1,20 @@
+{
+    "dbError:": "",
+    "items": [
+        {
+            "id": 1,
+            "name": "Apple",
+            "price": "$2"
+        },
+        {
+            "id": 2,
+            "name": "Bannana",
+            "price": "$1.50"
+        },
+        {
+            "id": 3,
+            "name": "Peach",
+            "price": "$2.25"
+        }
+    ] 
+}

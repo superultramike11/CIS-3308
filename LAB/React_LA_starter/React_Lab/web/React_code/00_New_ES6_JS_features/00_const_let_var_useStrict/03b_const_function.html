@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>Press F12 to see output in console</h3>
+        <script>
+            //"use strict";
+
+            const hello = function () {
+                console.log("hello world");
+            };
+
+            hello = function () {
+                console.log("hello USA");
+            }; // generates run time error, cannot redefine a constant
+            
+
+        </script>
+    </body>
+</html>

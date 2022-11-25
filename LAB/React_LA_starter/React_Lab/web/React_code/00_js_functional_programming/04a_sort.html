@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Sort (Functional Programming): Open F12 to See Output</h2>
+        <script>
+
+            // https://www.youtube.com/watch?v=rRgD1yVwIvE&list=TLPQMzAxMDIwMTk9ycJkiKUMvw&index=2
+
+            const carList = [
+                {id: 1, name: "Duster", year: 1980},
+                {id: 2, name: "Accord", year: 2019},
+                {id: 3, name: "Prius", year: 2010},
+                {id: 4, name: "Mustang", year: 2012}
+            ];
+
+            console.log("Using JS Sort - by Name");
+            let carsByName = carList.sort(function (car1, car2) {
+                // will return positive if car1 greater
+                // will return negative if car2 greater
+                // will return 0 if equal
+                if (car1.name > car2.name) {
+                    return 1;
+                } else if (car1.name < car2.name) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            });
+            console.log(carsByName);
+  
+        </script>
+    </body>
+</html>

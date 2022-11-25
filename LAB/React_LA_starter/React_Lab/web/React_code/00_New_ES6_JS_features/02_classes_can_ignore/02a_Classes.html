@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Classes in ES6</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>
+            Press F12 (open JS console) to see output.
+        </h3>
+        <p>
+            Classes in ES6 (like java).
+        </p>
+        <script>
+            // ES5 (regular JavaScript) way of creating a "class" 
+            function Point_ES5(xVal, yVal) {
+
+                this.x = xVal;
+                this.y = yVal;
+
+                this.coordinates = function () {
+                    console.log('ES5 point has x ' + this.x + ' and y ' + this.y);
+                };
+                this.moveTo = function (newX, newY) {
+                    this.x = newX;
+                    this.y = newY;
+                };
+            }
+            
+            //myPoint = Point_ES5(3,4);
+            //myPoint.moveTo(4,5);
+
+            // "Same" class created using new JavaScript (ES6) way
+            class Point_ES6 {
+
+                constructor(xVal, yVal) {
+                    this.x = xVal;
+                    this.y = yVal;
+                }
+                coordinates() {
+                    console.log('ES6 point has x ' + this.x + ' and y ' + this.y);
+                }
+                moveTo(newX, newY) {
+                    this.x = newX;
+                    this.y = newY;
+                }
+            }
+
+            var myPoint5 = new Point_ES5(10,20);
+            myPoint5.coordinates(); // prints "ES5 point has x 10 and y 20"
+            myPoint5.moveTo(100, 200);
+            myPoint5.coordinates(); // prints "ES5 point has x 100 and y 200"
+             
+            console.log("\nES6");
+            var myPoint6 = new Point_ES6(50, 80);
+            myPoint6.coordinates(); // prints "ES6 point has x 50 and y 80"
+            myPoint6.moveTo(500, 800);
+            myPoint6.coordinates(); // prints "ES6 point has x 500 and y 800"
+        </script>
+    </body>
+</html>
