@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <h2>A Select Tag "hand coded" using HTML</h2>
+
+        <p>
+            The select element is used to create a drop-down list.
+        </p>
+
+        <span>Choose a car:</span>
+        <select id="carList">
+            <option value="11">Volvo</option>
+            <option value="22">Saab</option>
+            <option value="33">Opel</option>
+            <option value="44">Audi</option>
+        </select>
+        <br><br>
+        <button onclick="showCarValue()">Choose Car</button>
+
+        <h2>A Select Tag generated using JS</h2>
+        <div id="genSelectContainer"> </div>
+
+        <script>
+
+
+            function MakePickList(params) {
+
+                var selectList = document.createElement("select");
+
+                // check that we have the parameter properties that we need.
+                if (!params.list || !params.list[0] || !params.displayProp || !params.idProp) {
+                    alert("Utils.makePickList function requires a parameter object with these properties: \n" +
+                            "list: array of objects that hold the key/value pairs from which to populate the select tag,\n" +
+                            "displayProp: name of property (in array of objects) to show in the pick list,\n" +
+                            "idProp: name of property that holds ids (value of select tag after user clicks an option).\n" +
+                            "selectedKey (optional): key that should be pre-selected in the pick list in the UI.");
+                    return selectList; // empty select list
+                }
+
+                // add options to the select list
+                for (var i=0; i<params.list.length; i++) { 
+
+                    var myOption = document.createElement("option");
+                    myOption.innerHTML = params.list[i][params.displayProp]; // what shows in the select tag
+                    myOption.value = params.list[i][params.idProp]; // the value behind each item shown in the select tag.
+                    selectList.appendChild(myOption);
+
+                    if (params.selectedKey && (selectList.options[i].value === params.selectedKey)) {
+                        selectList.selectedIndex = i;
+                    }
+
+                    // add option into the select list
+                    selectList.appendChild(myOption);
+                }
+
+                return selectList;
+
+            }
+
+            var roleList = [
+                {
+                    userRoleId: "10",
+                    userRoleType: "Admin",
+                    errorMsg: ""
+                },
+                {
+                    userRoleId: "20",
+                    userRoleType: "Edit",
+                    errorMsg: ""
+                },
+                {
+                    userRoleId: "30",
+                    userRoleType: "View",
+                    errorMsg: ""
+                }
+            ];
+
+            var genSelectTag = MakePickList({
+                list: roleList,
+                idProp: "userRoleId",
+                displayProp: "userRoleType", 
+                selectedKey: "30"
+            });
+
+            document.getElementById("genSelectContainer").appendChild(genSelectTag);
+
+            genSelectTag.onchange = function () {
+                var select = this; // the select tag that had it's value changed
+                alert("The Id you selected is: " + select.options[select.selectedIndex].value);
+            };
+
+            function showCarValue() {
+                var select = document.getElementById("carList");
+
+                alert("The Id of the car you selected is: " + select.options[select.selectedIndex].value);
+            }
+
+        </script>
+    </body>
+</html>
