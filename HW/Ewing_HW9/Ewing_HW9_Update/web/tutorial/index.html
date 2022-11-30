@@ -1,16 +1,64 @@
 <!DOCTYPE html>
+
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Tutorial Index Page</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-color: black;
+                color: white;
+            }
+        </style>
     </head>
-    <body>
-        <h2>Tutorial Home (Part of Tutorial Presentation)</h2>
-        <p>
-            Here's where you describe (Tutorial Style) to your classmates, how you created your 
-            reusable component. 
-        </p>
 
+    <body>
+        <h1>TUTORIAL INDEX PAGE</h1>
+        <h2>Describe your component</h2>
+        <ul>
+            <li>What it is/does: It will display an album object and provide the user (on hover) the album name and creator name
+                in addition to the dynamic rating system that will change colors based on different ratings</li>
+            <li>For example if the rating is 80 or above, the rating button for that object will be green signaling a great album.
+                For 60 to 70 range, the rating button for that object will be yellow signaling a decent album.
+                And finally if it's 50 or below, the rating button for that object will be red signaling a bad album</li>
+            <li>I increased the rating increment to +10 each time because I didn't want the user to have to click a million times to actually change the rating color</li>
+            <li>How to use it: So the actual component takes in four parameters, the album rating (preferably a number between 0 to 100), an album cover link, an album name, 
+                and the album creator name, and side parameter of a style object (which will allow the MakeAlbum contents to change). 
+                In addition to this component you can declare an on click button in the HTML page that allows you to increment any specified object you have possibly created
+                (full explanation of the on click button creation will be explained in code snippet below)</li>
+        </ul>
+        
+        <h2>Link to download/demo.html click <a href="download/demo.html" target="_blank">here</a></h2>
+        
+        <h2>Link to the download zip file click <a href="download.zip">here</a></h2>
+        
+        <h2>Describe and link to 3-5 CODE SNIPPETS</h2>
+        <ul>
+            <li>#1 Code Snippet: <a href="https://pastebin.com/6mSS1eKf" target="_blank">Function to get the album rating</a></li>
+            <li>#1 Explaination: This private function intakes a possible album rating number and based on the value it determines the specific classList,
+            so if the ratingNum is greater then 80, the button from the object will turn green, if the ratingNum is greater then 60, the button will be yellow,
+            if the ratingNum is less then 60, the button will be red. Additionally, I have a public function that allows you get directly get the album rating of an object
+            and change it to a desired number</li>
+            <li>#2 Code Snippet: <a href="https://pastebin.com/pxH2cBrS" target="_blank">Main Button to alter album rating state</a></li>
+            <li>#2 Explaination: On click, we take the first album and apply the getAlbumRating (see above code snippet to understand what this function does),
+                which parses the argument for an integer. Inside this parsing of the integer we apply a query selector with the proper type aka a button to the first album object.
+                Once we confirm this query selector (which looks for the button) we apply that to the innerHTML object so that we know the current value.
+                Finally once we get the main rating value we just add 10 to each button click</li>
+            <li>#3 Code Snippet: <a href="https://pastebin.com/tPSMT4YH" target="_blank">Main Creation of the MakeAlbum function</a></li>
+            <li>#3 Explaination: This code is where we actually declare two album objects and add them to the content tag on our HTML page.
+            First we declare the dataset to be sent to the MakeAlbum (I send two albums of similar content) with the following parameters 
+            (an album cover, the album rating which is an integer, the album author and the album name). 
+            Since we now have the dataset of each object, we can send this data to the MakeAlbum as parameters, in addition to a styleObj that can take in attributes like "thumbnailHover".
+            Finally once we declare these two instances of MakeAlbum, we can add them to the main HTML page inside the section that has the style id "content".</li>
+        </ul>
+        
+        <h2>Reference Links</h2>
+        <ul>
+            <li>This link is to the w3 schools page for <a href="https://www.w3schools.com/jsref/event_onclick.asp" target="_blank">Onclick events</a> and how to properly code them</li>
+            <li>This link is to the w3 schools page for <a href="https://www.w3schools.com/howto/howto_css_image_overlay.asp" target="_blank">Image hover overlay</a> and direct examples for different hover styles</li>
+            <li>This link is to a StackOverflow discussion where they mention a query selector function that allows you to modify html contents with a button
+                <a href="https://stackoverflow.com/questions/7035842/how-to-change-the-buttons-text-using-javascript" target="_blank">here</a>
+        </ul>
     </body>
 </html>

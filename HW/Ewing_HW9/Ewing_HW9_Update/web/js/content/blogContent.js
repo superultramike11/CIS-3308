@@ -103,6 +103,15 @@
                     Click <a href="webAPIs/logoff.jsp">here</a> for my Logoff API (takes no URL parameters). 
                 </li>
             </p>
+            
+            <h2>Update Homework Difficulty</h2>
+            <p>
+                In regards to this week's homework, I found this assignment to be challenging. I found it hard to understand the sample code given
+                and how to properly merge it into my database and other attributes. The easiest part was the setup but that seems trivial in the long
+                run, given that most to all of the work was implementation with new code.
+            
+                Other then that, you can view my database pdf <a target="_blank" href="pics/ewing_database.pdf">here</a>
+            </p>
 
             <!--Main Site Image-->
             <p style="text-align:center;">

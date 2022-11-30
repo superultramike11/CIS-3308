@@ -1,4 +1,4 @@
-/* global processUserData, SortableTableUtils, MakeClickSortTable, Utils */
+/* global SortableTableUtils, MakeClickSortTable, Utils */
 
 function userContent() {
 
@@ -35,8 +35,7 @@ function userContent() {
             // By changing the URL, you invoke the user insert. 
             window.location.hash = "#/userInsert";
         };
-
-
+        
         /* Property names in Web APIs for web_user data: "webUserId", "userEmail", "userPassword", "userPassword2", 
          * "image", "birthday", "membershipFee", "userRoleId", "userRoleType", "errorMsg"   */
 
@@ -70,7 +69,7 @@ function userContent() {
                     );
 
             // Remove this once you are done debugging...
-            userList[i].Error_Msg = SortableTableUtils.makeText(obj.webUserList[i].errorMsg);
+            //userList[i].Error_Msg = SortableTableUtils.makeText(obj.webUserList[i].errorMsg);
 
         }
 

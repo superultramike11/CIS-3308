@@ -1,7 +1,7 @@
 <%@page contentType="application/json; charset=UTF-8" pageEncoding="UTF-8"%> 
 
 <%@page language="java" import="dbUtils.DbConn" %>
-<%@page language="java" import="model.webUser.*" %>
+<%@page language="java" import="model.album.*" %>
 <%@page language="java" import="com.google.gson.*" %>
 
 <%
@@ -22,7 +22,7 @@
         System.out.println("jsonUpdateData is " + jsonUpdateData);
         errorMsgs.errorMsg = dbc.getErr();
         if (errorMsgs.errorMsg.length() == 0) { // means db connection is ok
-            System.out.println("updateUserAPI.jsp - ready to update");
+            System.out.println("updateAlbumAPI.jsp - ready to update");
             
             // Must use gson to convert JSON (that the user provided as part of the url, the jsonUpdateData. 
             // Convert from JSON (JS object notation) to POJO (plain old java object).

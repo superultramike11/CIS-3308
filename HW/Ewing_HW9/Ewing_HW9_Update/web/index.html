@@ -51,10 +51,10 @@
         
         <script src="js/content/account.js"></script>
         <script src="js/content/albumContent.js"></script>
+        <script src="js/content/albumMods.js"></script>
         <script src="js/content/albumObjectContent.js"></script>
         <script src="js/content/blogContent.js"></script>
         <script src="js/content/homeContent.js"></script>
-        <script src="js/content/registerContent.js"></script>
         <script src="js/content/userContent.js"></script>
         <script src="js/content/webUserMods.js"></script>
         
@@ -119,6 +119,11 @@
             myNav.addRoute({
                 linkURL: "#/userUpdate",
                 action: webUserMods.update
+            });
+            
+            myNav.addRoute({
+                linkURL: "#/albumUpdate",
+                action: albumMods.update
             });
         </script>
     </body>

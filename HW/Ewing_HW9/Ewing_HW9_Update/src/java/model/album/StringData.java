@@ -33,5 +33,23 @@ public class StringData {
     // default constructor leaves all data members with empty string (Nothing null).
     public StringData() {
     }
+    
+    public int getCharacterCount() {
+        String s = this.album_id + this.album_name + this.album_cover + this.album_price + this.album_release_date
+                + this.album_genre + this.album_author + this.album_rating + this.web_user_id + this.user_email;
+        return s.length();
+    }
 
+    public String toString() {
+        return "Web User Id:" + this.album_id
+                + ", User Email: " + this.album_name
+                + ", User Password: " + this.album_cover
+                + ", User Password 2: " + this.album_price
+                + ", Image: " + this.album_release_date
+                + ", Birthday: " + this.album_genre
+                + ", Membership Fee: " + this.album_author
+                + ", User Role Id: " + this.album_rating
+                + ", User Role Type: " + this.web_user_id
+                + ", User Email: " + this.user_email;
+    }
 }

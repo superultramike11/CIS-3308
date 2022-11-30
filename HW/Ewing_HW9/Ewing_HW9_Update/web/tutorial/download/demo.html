@@ -1,54 +1,81 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Javascript Cat Show</title>
+    <title>Demo Page</title>
+    <link href="albumStyle.css" rel="stylesheet" type="text/css" />
+    <style>
+        .demo {
+            width: 100%;
+            background-image: url("https://cdn.shopify.com/s/files/1/0551/4179/3984/products/mountain_2048x2048.jpg?v=1617148889");
+            font-family: sans-serif;
+            color: #F2FAFF;
+        }
 
-        <link href="slideShow.css" rel="stylesheet" type="text/css" />  
+        .demo td {
+            padding: 1rem;
+        }
 
-        <style> 
+        .demo .albums {
+            width: 100%;
+        }
 
-            body {
-                background-color:#707790;
-            }
-            
-            h2 {
-                text-align:center;
-            }
-
-        </style>
-
-    </head>
-    <body>
-        <h2>Demo Page - Shows That Components Work Independently</h2>
-
+        #content {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+    <body class="demo">
         <div id="content">
         </div>
 
-        <script src="MakeSlideShow.js"></script>
+        <table class="albums">
+            <tr>
+                <!--Explaination of onclick button, cause it's a bit messy-->
+                <!--On click We first take the first album and apply the getAlbumRating which parses the argument for an integer-->
+                <!--Inside this parsing of the integer we apply a query selector with the proper type aka a button to the firstalbumobject-->
+                <!--Once we confirm this queryselector which looks for the button we apply that to the innerHTML object so that we know the current value-->
+                <!--Finally once we get the main rating value we just add 10 to each button click-->
+                <td>
+                    <p>Album One</p>
+                    <button type="button" onclick=firstAlbum.getAlbumRating(parseInt(firstAlbum.querySelector("button").innerHTML)+10);>Increase Review Score</button>
+                    <button type="button" onclick=firstAlbum.getAlbumRating(parseInt(firstAlbum.querySelector("button").innerHTML)-10);>Decrease Review Score</button>
+                </td>
+                <td>
+                    <p>Album Two</p>
+                    <button type="button" onclick=secondAlbum.getAlbumRating(parseInt(secondAlbum.querySelector("button").innerHTML)+10);>Increase Review Score</button>
+                    <button type="button" onclick=secondAlbum.getAlbumRating(parseInt(secondAlbum.querySelector("button").innerHTML)-10);>Decrease Review Score</button>
+                </td>
+                <td>
+                    <p>Album Three</p>
+                    <button type="button" onclick=thirdAlbum.getAlbumRating(parseInt(thirdAlbum.querySelector("button").innerHTML)+10);>Increase Review Score</button>
+                    <button type="button" onclick=thirdAlbum.getAlbumRating(parseInt(thirdAlbum.querySelector("button").innerHTML)-10);>Decrease Review Score</button>
+                </td>
+            </tr>
+        </table>
+
+        <script src="MakeAlbum.js"></script>
         <script>
+                        var albumOneData = {
+                            albumCover: "https://e.snmc.io/i/600/w/c958f9572b6cf575306356ce8c1565cb/8249847/black-midi-schlagenheim-Cover-Art.jpg",
+                            albumRating: 90, albumAuthor: "Black Midi", albumName: "Schlagenheim by"
+                        };
+                        var albumTwoData = {
+                            albumCover: "https://e.snmc.io/i/600/w/82702edb02091c03c5712bf1185e980f/9102556/black-midi-cavalcade-Cover-Art.jpg",
+                            albumRating: 100, albumAuthor: "Black Midi", albumName: "Cavalcade by"
+                        };
+                        var albumThreeData = {
+                            albumCover: "https://e.snmc.io/i/600/w/83654a9bd9d0008b0b1b8da3ba895568/9932087/black-midi-hellfire-Cover-Art.jpg",
+                            albumRating: 80, albumAuthor: "Black Midi", albumName: "Hellfire by"
+                        };
 
-            var myPicList = [
-                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic1.png",
-                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic2.png",
-                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic3.png"
-            ];
+                        var firstAlbum = MakeAlbum(albumOneData, {style: "thumbnailHover"});
+                        var secondAlbum = MakeAlbum(albumTwoData, {style: "thumbnailHover"});
+                        var thirdAlbum = MakeAlbum(albumThreeData, {style: "thumbnailHover"});
 
-            var ss1 = MakeSlideShow(myPicList, "slideShow");
-            document.getElementById("content").appendChild(ss1);
+                        firstAlbum.getAlbumRating(60);
 
-            // Example showing why you need to get the ss reference, so the HTML page can invoke 
-            // any public methods that may be available from the returned slide show object.
-            ss1.setPicNum(2);
-
-            // create second slideshow object
-            var otherPicList = [
-                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic4.png",
-                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic5.png",
-                "http://cis-linux2.temple.edu/~sallyk/pics_cat/pic6.png"
-            ];
-            var ss2 = MakeSlideShow(otherPicList, "slideShow");
-            document.getElementById("content").appendChild(ss2);
-
+                        document.getElementById("content").appendChild(firstAlbum);
+                        document.getElementById("content").appendChild(secondAlbum);
+                        document.getElementById("content").appendChild(thirdAlbum);
         </script>
     </body>
 </html>
