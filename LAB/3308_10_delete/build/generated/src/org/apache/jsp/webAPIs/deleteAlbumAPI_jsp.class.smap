@@ -1,0 +1,11 @@
+SMAP
+deleteAlbumAPI_jsp.java
+JSP
+*S JSP
+*F
++ 0 deleteAlbumAPI.jsp
+webAPIs/deleteAlbumAPI.jsp
+*L
+1,7:47
+9,23:55
+*E
